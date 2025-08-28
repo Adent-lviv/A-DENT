@@ -9,6 +9,8 @@ import {
   CardName,
   CardPrice,
   HeaderCard,
+  NewPrice,
+  OldPrice,
   ProductCardEl,
 } from "./styles";
 import { FaTrash, FaEdit } from "react-icons/fa";
@@ -18,21 +20,33 @@ export default function ProductCard({
   name,
   description,
   price,
+  oldPrice,
   imageUrl,
   onDelete,
-  article, onEdit, category
+  article,
+  onEdit,
+  category,
 }) {
   return (
     <ProductCardEl>
       {imageUrl && <CardImage imageUrl={imageUrl} />}
       <CardContent>
-        <HeaderCard>  <CardName>{name}</CardName>
-         <ArticleText >{article}</ArticleText></HeaderCard>
-      
-        <CardDescr>{description}</CardDescr>
+        <HeaderCard>
+          <CardName>{name}</CardName>
+          <ArticleText>{article}</ArticleText>
+        </HeaderCard>
         <CardPrice>
-          <b>Ціна:</b> {price}
+          <b>Ціна: </b>
+          {oldPrice ? (
+            <>
+              <OldPrice>{oldPrice}</OldPrice>
+              <NewPrice>{price}</NewPrice>
+            </>
+          ) : (
+            <NewPrice>{price} </NewPrice>
+          )}
         </CardPrice>
+        <CardDescr>{description}</CardDescr>
 
         <CardBtns>
           {onDelete && (
@@ -40,8 +54,20 @@ export default function ProductCard({
               <FaTrash />
             </CardBtnTrash>
           )}
-           {onEdit && (
-            <CardBtnEdit onClick={() => onEdit({ id, name, description, price, article, imageUrl,category })}>
+          {onEdit && (
+            <CardBtnEdit
+              onClick={() =>
+                onEdit({
+                  id,
+                  name,
+                  description,
+                  price,
+                  article,
+                  imageUrl,
+                  category,
+                })
+              }
+            >
               <FaEdit />
             </CardBtnEdit>
           )}

@@ -8,8 +8,9 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { db } from "../../api/firebase";
+import { toast } from "react-toastify";
 
-import AddProductForm from "../AddProductForm/AddProductForm";
+import AddProductForm from "./AddProductForm/AddProductForm";
 import ProductList from "../ProductList/ProductList";
 import { SubTitle } from "../globalStyles";
 import { AddWrapper } from "./styles";
@@ -37,7 +38,7 @@ export default function AddProduct() {
   }
 
   async function handleAddProduct(values, { resetForm }) {
-    if (!values.file) return alert("Оберіть зображення");
+    if (!values.file) return toast.warning("Оберіть зображення");
 
     setLoading(true);
     try {
@@ -57,44 +58,38 @@ export default function AddProduct() {
         name: values.name,
         article: values.article,
         description: values.description,
+        oldPrice: values.oldPrice,
         price: values.price,
         category: values.category,
         imageUrl: data.secure_url,
       });
 
       await fetchProducts();
-      alert("Товар додано!");
+      toast.success(" Товар додано!");
       resetForm();
     } catch (err) {
-      console.error("Помилка додавання товару:", err);
-      alert("Не вдалось додати товар");
+      console.error(" Помилка додавання товару:", err);
+      toast.error(" Не вдалося додати товар");
     } finally {
       setLoading(false);
     }
   }
 
   async function handleDeleteProduct(id) {
-    if (!window.confirm("Видалити цей товар?")) return;
     try {
       await deleteDoc(doc(db, "products", id));
       fetchProducts();
     } catch (err) {
       console.error("Помилка видалення товару:", err);
-      alert("Не вдалось видалити товар");
     }
   }
 
   async function handleUpdateProduct(values) {
-    console.log("handleUpdateProduct values:", values);
-    console.log("values.file present:", !!values.file, values.file);
-
-    
     setLoading(true);
     try {
       const productRef = doc(db, "products", editingProduct.id);
 
-    
-  let imageUrl = values.imageUrl;
+      let imageUrl = values.imageUrl;
       if (values.file) {
         const formData = new FormData();
         formData.append("file", values.file);
@@ -106,25 +101,24 @@ export default function AddProduct() {
         );
         const data = await res.json();
         imageUrl = data.secure_url;
-        console.log("Cloudinary response", data);
       }
 
- let updatedData = {
+      let updatedData = {
         name: values.name ?? "",
         article: values.article ?? "",
         description: values.description ?? "",
         price: values.price ? values.price : 0,
-   category: values.category ?? "",
-   imageUrl,
+        oldPrice: values.oldPrice ?? "",
+        category: values.category ?? "",
+        imageUrl,
       };
-  console.log("🚀 updatedProduct:", updatedData);
       await updateDoc(productRef, updatedData);
       await fetchProducts();
-      alert("Товар оновлено!");
+      toast.success(" Товар оновлено!");
       setEditingProduct(null);
     } catch (err) {
       console.error(err);
-      alert("Не вдалося оновити товар");
+      toast.error(" Не вдалося оновити товар");
     } finally {
       setLoading(false);
     }

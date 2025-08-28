@@ -3,10 +3,17 @@ import * as Yup from "yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../api/firebase";
 import { useNavigate } from "react-router-dom";
-import { InputText,StyledForm } from "./styles";
-import { ColorButton, Container, Error, MainTitle, Title } from "../../components/globalStyles";
+import { InputText, StyledForm } from "./styles";
+import {
+  ColorButton,
+  Container,
+  Error,
+  MainTitle,
+  Title,
+} from "../../components/globalStyles";
 import { useState } from "react";
-import { StyledError } from "../../components/AddProductForm/styles";
+import { StyledError } from "../../components/AddProduct/AddProductForm/styles";
+import { toast } from "react-toastify";
 
 export default function LogInPage() {
   const [error, setError] = useState("");
@@ -22,16 +29,18 @@ export default function LogInPage() {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       navigate("/home");
+      toast.success(" Ласкаво просимо до редагування!");
     } catch (err) {
       console.error(err);
       setError("Невірний email або пароль");
+      toast.error("Oops!");
     }
     setSubmitting(false);
   };
 
   return (
     <Container>
-      <Title style={{marginTop:'100px'}}>Вхід</Title>
+      <Title style={{ marginTop: "100px" }}>Вхід</Title>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={validationSchema}
@@ -39,16 +48,15 @@ export default function LogInPage() {
       >
         {({ isSubmitting }) => (
           <StyledForm as={Form}>
-           
-               <InputText type="email" name="email"
-              placeholder="Email" />
-            <StyledError name="email" component="div"  />
+            <InputText type="email" name="email" placeholder="Email" />
+            <StyledError name="email" component="div" />
 
-        
-                <InputText    type="password" 
+            <InputText type="password" name="password" placeholder="Пароль" />
+            <StyledError
               name="password"
-              placeholder="Пароль" />
-            <StyledError name="password" autoComplete="new-password" component="div" />
+              autoComplete="new-password"
+              component="div"
+            />
 
             <ColorButton type="submit" disabled={isSubmitting}>
               Увійти

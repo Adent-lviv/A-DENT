@@ -2,7 +2,7 @@
   --main-bg: #f7f9fa;
   --main-text: #1c1c1c;
 
-  --accent: #0079a8;
+  --accent: #ee1c27;
   --line: #7a7a7aff;
 
   --red: #b02323;
@@ -33,10 +33,7 @@ a:hover {
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  min-width: 320px;
+
 }
 div {
   width: 100%;
@@ -45,25 +42,41 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
 
+  to {
+    opacity: 1;
+  }
+}
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: none;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.45s ease, box-shadow 0.45s ease;
+    animation: fadeIn 0.3s ease forwards;
 }
 button:hover {
-  border-color: #646cff;
+transform: scale(1.06);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
+   
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}button:active {
+  transform: scale(0.95);
 }
+
+
+
 input:hover,
 input:focus {
   background-color: transparent;
@@ -78,15 +91,39 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px white inset !important;
   -webkit-text-fill-color: #000 !important;
 }
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Загальні тости */
+.Toastify__toast {
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  background: #1c1c1c;
+  /* темний фон */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  /* легке підсвічування */
 }
+
+/* Успішні тости */
+.Toastify__toast--success {
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+}
+
+/* Помилки */
+.Toastify__toast--error {
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
+}
+
+/* Попередження */
+.Toastify__toast--warning {
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.6);
+}
+
+/* Інформаційні */
+.Toastify__toast--info {
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+}
+
+

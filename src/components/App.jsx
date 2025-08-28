@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Layout from "./Layout";
+import { ToastContainer } from "react-toastify";
 
 const LogIn = lazy(() => import("../pages/LogInPage/LogInPage"));
 const Home = lazy(() => import("../pages/HomePage/HomePage"));
@@ -27,6 +28,15 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+       <ToastContainer   position="top-right"
+  autoClose={3000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover />
     </Suspense>
   );
 }

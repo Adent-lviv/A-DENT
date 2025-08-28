@@ -1,7 +1,6 @@
 import { ErrorMessage, Field, Form } from "formik";
 import { FiX } from "react-icons/fi";
 import styled from "styled-components";
-import { fadeIn } from "../globalStyles";
 
 export const StyledForm = styled(Form)`
   width: 100%;
@@ -87,16 +86,12 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   font-weight: 600;
 
-  
- 
-    transition: transform 0.2s ease, background 0.2s ease;
-  animation: ${fadeIn} 0.3s ease forwards;
-&:disabled {
+
+  &:disabled {
     background: #aaa;
     cursor: not-allowed;
   }
   &:hover {
-    transform: scale(1.2);
     color: var(--main-bg);
     background: var(--accent); /* змінюємо колір при наведенні */
   }
@@ -105,7 +100,21 @@ export const SubmitButton = styled.button`
     transform: scale(0.9);
   }
 `;
+export const WrapperPriceInput = styled.div`
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+  input {
+    width: 100%;
+  }
 
+  @media (min-width: 768px) {
+    input {
+      width: auto;
+    }
+  }
+`;
 export const FileInputWrapper = styled.div``;
 
 export const HiddenFileInput = styled.input`
@@ -116,17 +125,15 @@ export const StyledLabel = styled.label`
   display: inline-flex;
   align-items: center;
   gap: 5px;
-
   color: black;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: color 0.45s ease;
   padding: 5px 2px;
-  &:hover {
-    background-color: var(--accent);
 
-    color: var(--main-bg);
+  &:hover {
+    color: var(--accent);
   }
 `;
 

@@ -14,16 +14,17 @@ import {
   StyledSelect,
   StyledTextarea,
   SubmitButton,
+  WrapperPriceInput,
 } from "./styles";
+import { WrapperBase } from "../../globalStyles";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string().required("Виберіть категорію"),
   name: Yup.string().required("Вкажіть назву"),
   article: Yup.string().required("Вкажіть артикул"),
   description: Yup.string(),
-  price: Yup.string()
-    .typeError("Ціна має бути числом")
-    .required("Вкажіть ціну"),
+  oldPrice: Yup.string(),
+  price: Yup.string().required("Вкажіть ціну"),
   file: Yup.mixed().required("Оберіть файл"),
 });
 
@@ -34,6 +35,7 @@ export default function AddProductForm({ onSubmit, loading }) {
     article: "",
     description: "",
     price: "",
+    oldPrice: "",
     file: null,
   };
 
@@ -45,6 +47,8 @@ export default function AddProductForm({ onSubmit, loading }) {
         article: initialValues.article || "",
         description: initialValues.description || "",
         price: initialValues.price || "",
+        oldPrice: initialValues.oldPrice || "",
+
         file: null,
       }}
       validationSchema={validationSchema}
@@ -83,8 +87,13 @@ export default function AddProductForm({ onSubmit, loading }) {
           />
           <StyledError name="description" component="div" />
 
-          <StyledInput type="text" name="price" placeholder="Ціна" />
+          <WrapperPriceInput style={{flexWrap: 'wrap'}}>
+            <StyledInput type="text" name="oldPrice" placeholder="Стара Ціна" />
+
+            <StyledInput type="text" name="price" placeholder="Ціна" />
+          </WrapperPriceInput>
           <StyledError name="price" component="div" />
+
           <FileInputWrapper>
             <HiddenFileInput
               type="file"
@@ -101,10 +110,8 @@ export default function AddProductForm({ onSubmit, loading }) {
               <FiPaperclip size={20} />
               Завантажити файл
             </StyledLabel>
-
           </FileInputWrapper>
 
-          
           {values.filePreview && (
             <PreviewWrapper>
               <PreviewImg src={values.filePreview} alt="preview" />

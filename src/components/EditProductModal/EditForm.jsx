@@ -9,7 +9,8 @@ import {
   StyledSelect,
   StyledTextarea,
   SubmitButton,
-} from "../AddProductForm/styles";
+} from "../AddProduct/AddProductForm/styles";
+import { WrapperBase } from "../globalStyles";
 
 export default function EditProductForm({ initialValues, onSubmit, loading }) {
   const validationSchema = Yup.object().shape({
@@ -18,6 +19,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
     article: Yup.string(),
     description: Yup.string(),
     price: Yup.string(),
+    oldPrice: Yup.string(),
     file: Yup.mixed().nullable(),
   });
 
@@ -73,14 +75,24 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
             onChange={(e) => setFieldValue("description", e.target.value)}
           />
           <StyledError name="description" component="div" />
+          <WrapperBase>
+            <StyledInput
+              type="text"
+              name="oldPrice"
+              placeholder="Стара Ціна"
+              value={values.oldPrice || ""}
+              onChange={(e) => setFieldValue("oldPrice", e.target.value)}
+            />
 
-          <StyledInput
-            type="text"
-            name="price"
-            placeholder="Ціна"
-            value={values.price || ""}
-            onChange={(e) => setFieldValue("price", e.target.value)}
-          />
+            <StyledInput
+              type="text"
+              name="price"
+              placeholder="Ціна"
+              value={values.price || ""}
+              onChange={(e) => setFieldValue("price", e.target.value)}
+            />
+          </WrapperBase>
+
           <StyledError name="price" component="div" />
 
           <input

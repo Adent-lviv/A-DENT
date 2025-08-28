@@ -23,7 +23,7 @@ export default function ProductsPage() {
   }, []);
 
   return (
-    <Container>
+    <Container style={{paddingTop:'50px'}}>
 
       {loading ? <p>Завантаження...</p> : <ProductList products={products} />}
     </Container>

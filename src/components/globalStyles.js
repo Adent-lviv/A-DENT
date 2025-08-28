@@ -35,11 +35,9 @@ export const ColorButton = styled.button`
   width: 100%;
   padding: 10px;
   background-color: var(--accent);
-    transition: transform 0.2s ease, background 0.2s ease;
-  animation: ${fadeIn} 0.3s ease forwards;
+    
   &:hover {
-    transform: scale(1.2);
-    background: var(--main-text); /* змінюємо колір при наведенні */
+    background: var(--main-text); 
   }
 
   &:active {
@@ -117,6 +115,7 @@ export const WrapperBase = styled.div`
   margin-top: 10px;
   align-items: center;
   justify-content: space-around;
+
 `;
 export const LogoutBtn = styled.button`
   color: var(--main-text);

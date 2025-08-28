@@ -12,12 +12,14 @@ export default function EditProductModal({ product, onClose, onSubmit }) {
       article: product.article || "",
       description: product.description || "",
       price: product.price || "",
+      oldPrice: product.oldPrice || "",
       imageUrl: product.imageUrl || "",
       file: null,
     }),
     [product] 
   );
   if (!product) return null;
+  console.log(initialValues)
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>

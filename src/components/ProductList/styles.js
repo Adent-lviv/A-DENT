@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { fadeIn } from "../globalStyles";
 
 export const ProductListEL = styled.ul`
   display: flex;
@@ -28,17 +27,10 @@ export const CategoryNavItem = styled.button`
   cursor: pointer;
   font-size: 1rem;
 
-  transition: transform 0.2s ease, background 0.2s ease;
-  animation: ${fadeIn} 0.3s ease forwards;
 
   &:hover {
-    transform: scale(1.2);
     color: var(--main-bg);
     background: var(--accent); /* змінюємо колір при наведенні */
-  }
-
-  &:active {
-    transform: scale(0.9);
   }
 
   @media (min-width: 768px) {

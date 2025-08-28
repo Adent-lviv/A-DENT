@@ -23,6 +23,7 @@ export const CardDescr = styled.p`
   height: 110px;
   overflow-y: auto;
   margin: 0;
+  margin-bottom: 10px;
 
   /* стилізація скролу */
   &::-webkit-scrollbar {
@@ -48,10 +49,23 @@ export const CardDescr = styled.p`
   white-space: pre-wrap; /* зберігає перенос рядків */
   word-wrap: break-word; /* переносить довгі слова */
 `;
-export const CardPrice = styled.p`margin-top:10px`;
+export const CardPrice = styled.p`
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
+export const OldPrice = styled.span`
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+`;
+export const NewPrice = styled.span`
+  color: var(--accent);
+  font-weight: 600;
+`;
+
 export const CardContent = styled.div`
   flex: 1;
-  padding: 10px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -68,6 +82,7 @@ export const CardBtnTrash = styled.button`
   border: 1px solid var(--line);
   &:hover {
     background-color: var(--accent);
+    color: var(--main-bg);
   }
 `;
 export const CardBtnEdit = styled.button`
@@ -75,11 +90,13 @@ export const CardBtnEdit = styled.button`
   &:hover {
     background-color: var(--accent);
 
-    color: var(--main-bg);
+    color: var(--main-text);
   }
 `;
 export const CardImage = styled.div`
-  height: 60%;
+  height: 45%;
+  min-height: 45%;
+  max-height: 45%;
   width: 100%;
   border-radius: 12px;
   background-size: cover;
