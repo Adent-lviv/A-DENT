@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../api/firebase";
 import ProductList from "../../components/ProductList/ProductList";
-import { Container } from "../../components/globalStyles";
+import { Container, LoaderWrapper } from "../../components/globalStyles";
+import { RiseLoader } from "react-spinners";
 
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ export default function ProductsPage() {
   return (
     <Container style={{paddingTop:'50px'}}>
 
-      {loading ? <p>Завантаження...</p> : <ProductList products={products} />}
+      {loading ? <LoaderWrapper> <RiseLoader color="#ee1c27" size={30}/></LoaderWrapper> : <ProductList products={products} />}
     </Container>
   );
 }

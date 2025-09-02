@@ -4,12 +4,18 @@ import styled from "styled-components";
 
 export const StyledForm = styled.form`
   display: flex;
+  margin:0 auto;
   margin-top: 30px;
 
   flex-direction: column;
   justify-content: center;
 
   align-items: center;
+  
+  max-width:500px;
+  width:100%;
+
+
 
   `;
 export const InputText = styled(Field)`

@@ -78,6 +78,7 @@ useEffect(() => {
         price: values.price,
         category: values.category,
         imageUrl: data.secure_url,
+        inStock: true, 
       });
 
       await fetchProducts();
@@ -91,6 +92,8 @@ useEffect(() => {
     }
   }
 
+
+  
   async function handleDeleteProduct(id) {
     try {
       await deleteDoc(doc(db, "products", id));
@@ -100,46 +103,48 @@ useEffect(() => {
     }
   }
 
-  async function handleUpdateProduct(values) {
-    setLoading(true);
-    try {
-      const productRef = doc(db, "products", editingProduct.id);
+async function handleUpdateProduct(values) {
+  setLoading(true);
+  try {
+    const productRef = doc(db, "products", editingProduct.id);
+    let imageUrl = values.imageUrl;
 
-      let imageUrl = values.imageUrl;
-      if (values.file) {
-        const formData = new FormData();
-        formData.append("file", values.file);
-        formData.append("upload_preset", "Dent-ua");
+    if (values.file) {
+      const formData = new FormData();
+      formData.append("file", values.file);
+      formData.append("upload_preset", "Dent-ua");
 
-        const res = await fetch(
-          "https://api.cloudinary.com/v1_1/dw8udv2vd/image/upload",
-          { method: "POST", body: formData }
-        );
-        const data = await res.json();
-        imageUrl = data.secure_url;
-      }
-
-      let updatedData = {
-        name: values.name ?? "",
-        article: values.article ?? "",
-        description: values.description ?? "",
-        price: values.price ? values.price : 0,
-        oldPrice: values.oldPrice ? values.oldPrice : 0,
-
-        category: values.category ?? "",
-        imageUrl,
-      };
-      await updateDoc(productRef, updatedData);
-      await fetchProducts();
-      toast.success(" Товар оновлено!");
-      setEditingProduct(null);
-    } catch (err) {
-      console.error(err);
-      toast.error(" Не вдалося оновити товар");
-    } finally {
-      setLoading(false);
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dw8udv2vd/image/upload",
+        { method: "POST", body: formData }
+      );
+      const data = await res.json();
+      imageUrl = data.secure_url;
     }
+
+    const updatedData = {
+      name: values.name ?? "",
+      article: values.article ?? "",
+      description: values.description ?? "",
+      price: values.price ? values.price : 0,
+      oldPrice: values.oldPrice ? values.oldPrice : 0,
+      category: values.category ?? "",
+      imageUrl,
+    };
+
+    await updateDoc(productRef, updatedData);
+    await fetchProducts();
+    toast.success("Товар оновлено!");
+    setEditingProduct(null);
+    setIsModalOpen(false); // <- закриваємо модалку
+  } catch (err) {
+    console.error(err);
+    toast.error("Не вдалося оновити товар");
+  } finally {
+    setLoading(false);
   }
+}
+
 
   return (
     <>
@@ -165,7 +170,8 @@ useEffect(() => {
         <EditProductModal
           product={editingProduct}
           onClose={() => setIsModalOpen(false)}
-          onSubmit={handleUpdateProduct} // твоя функція оновлення
+          onSubmit={handleUpdateProduct}
+          loading={loading}
         />
       )}
     </>

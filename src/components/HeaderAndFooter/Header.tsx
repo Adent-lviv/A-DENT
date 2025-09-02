@@ -9,13 +9,14 @@ import {
   NameLogo,
   TextLogoContainer,
 } from "./styles";
+import logo from "../../../public/logo.png";
 
 const Header = () => {
   return (
     <HeaderWrapper>
       <Container style={{ display: "flex", flexDirection: "row" }}>
         <LogoContainer>
-          <ImgLogo src="../../../public/logo.png" alt="Logo" />
+          <ImgLogo src={logo} alt="Logo" />
           <TextLogoContainer>
           
             <NameLogo>A-dent</NameLogo>

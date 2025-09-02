@@ -1,3 +1,4 @@
+
 import {
   ArticleText,
   CardBtnEdit,
@@ -25,13 +26,10 @@ export default function ProductCard({
   onDelete,
   article,
   onEdit,
-  category,
+  category,inStock,
+    onToggleStock,
 }) {
 
-
-
-
-  
   return (
     <ProductCardEl>
       {imageUrl && <CardImage imageUrl={imageUrl} />}
@@ -52,7 +50,16 @@ export default function ProductCard({
           )}
         </CardPrice>
         <CardDescr>{description}</CardDescr>
-
+   {onToggleStock &&  (<div style={{ marginTop: 10 }}>
+          <label>
+            <input
+              type="checkbox"
+              checked={inStock}
+              onChange={() => onToggleStock(id, !inStock)}
+            />{" "}
+            В наявності
+          </label>
+        </div>) }
         <CardBtns>
           {onDelete && (
             <CardBtnTrash onClick={() => onDelete(id)}>

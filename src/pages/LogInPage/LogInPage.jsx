@@ -38,8 +38,10 @@ export default function LogInPage() {
     setSubmitting(false);
   };
 
+
+  
   return (
-    <Container>
+    <Container style={{marginBottom: "150px"}}>
       <Title style={{ marginTop: "100px" }}>Вхід</Title>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -51,10 +53,10 @@ export default function LogInPage() {
             <InputText type="email" name="email" placeholder="Email" />
             <StyledError name="email" component="div" />
 
-            <InputText type="password" name="password" placeholder="Пароль" />
+            <InputText type="password"   autoComplete="off" name="password" placeholder="Пароль" />
             <StyledError
               name="password"
-              autoComplete="new-password"
+       
               component="div"
             />
 

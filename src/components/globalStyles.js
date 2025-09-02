@@ -15,16 +15,13 @@ export const Container = styled.div`
   margin: auto;
   padding: 20px @media (min-width: 481px) {
     max-width: 95%;
-  
   }
 
   @media (min-width: 768px) {
     max-width: 90%;
-  
   }
   @media (min-width: 1200px) {
     max-width: 1200px;
-  
   }
   @media (min-width: 1440px) {
     max-width: 1400px;
@@ -35,9 +32,9 @@ export const ColorButton = styled.button`
   width: 100%;
   padding: 10px;
   background-color: var(--accent);
-    
+
   &:hover {
-    background: var(--main-text); 
+    background: var(--main-text);
   }
 
   &:active {
@@ -115,7 +112,6 @@ export const WrapperBase = styled.div`
   margin-top: 10px;
   align-items: center;
   justify-content: space-around;
-
 `;
 export const LogoutBtn = styled.button`
   color: var(--main-text);
@@ -123,4 +119,23 @@ export const LogoutBtn = styled.button`
   padding: 10px 16px;
   background-color: var(--main-bg);
   border: 2px solid var(--main-text);
+`;
+export const MainLoaderWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.34);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+`;
+export const LoaderWrapper = styled.div`
+  display: flex;
+
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 `;

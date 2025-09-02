@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Layout from "./Layout";
 import { ToastContainer } from "react-toastify";
+import { RiseLoader } from "react-spinners";
+import { MainLoaderWrapper } from "./globalStyles";
 
 const LogIn = lazy(() => import("../pages/LogInPage/LogInPage"));
 const Home = lazy(() => import("../pages/HomePage/HomePage"));
@@ -11,7 +13,7 @@ const NotFound = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
 
 function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<MainLoaderWrapper> <RiseLoader color="#ee1c27" size={30} /></MainLoaderWrapper>}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Products />} />

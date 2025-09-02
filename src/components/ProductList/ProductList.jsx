@@ -4,9 +4,12 @@ import { Container, Divider } from "../globalStyles";
 import { CategoryNav, CategoryNavItem, ProductListEL } from "./styles";
 import ConfirmModal from "../BasicComponents/ConfirmModal";
 import { toast } from "react-toastify";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../api/firebase";
 
 export default function ProductList({ products, onDelete, onEdit }) {
   const categories = [...new Set(products.map((p) => p.category))];
+    const [user] = useAuthState(auth);
  const [confirmId, setConfirmId] = useState(null);
 
   const handleDeleteConfirmed = async (id) => {
@@ -27,6 +30,9 @@ export default function ProductList({ products, onDelete, onEdit }) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+
+  
   return (
     <Container>
       <CategoryNav>
@@ -68,8 +74,8 @@ export default function ProductList({ products, onDelete, onEdit }) {
                     oldPrice={oldPrice}
                     article={article}
                     imageUrl={imageUrl}
-                      onDelete={() => setConfirmId(id)} 
-                    onEdit={onEdit}
+                     onDelete={user ? () => setConfirmId(id) : null}
+  onEdit={user ? onEdit : null}
                   />
                 )
               )}

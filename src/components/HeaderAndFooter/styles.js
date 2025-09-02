@@ -41,6 +41,12 @@ export const Address = styled.address`
 export const AddressLink = styled.a`
   color: var(--main-bg);
   font-size: 0.7rem;
+  transition: transform 0.3s, color 0.3s;
+   &:hover {
+      transform: scale(1.1);
+      color: var(--accent);
+    }
+
 `;
 
 
@@ -70,6 +76,7 @@ export const FreeDelivery = styled.div`
   margin-bottom: 30px;
   font-weight: 600;
   font-size: 1.2rem;
+  z-index:500;
   animation: ${pulse} 3s infinite;
   text-align: center;
 `;

@@ -4,7 +4,7 @@ import EditProductForm from "./EditForm";
 import { CloseButton} from "../globalStyles.js";
 import { ModalOverlay, ModalContent } from "./styles";
 
-export default function EditProductModal({ product, onClose, onSubmit }) {
+export default function EditProductModal({ product, onClose, onSubmit, loading  }) {
   
   
   const initialValues = useMemo(
@@ -13,8 +13,8 @@ export default function EditProductModal({ product, onClose, onSubmit }) {
       name: product.name || "",
       article: product.article || "",
       description: product.description || "",
-      price: product.price || "",
-      oldPrice: product.oldPrice ? product.oldPrice.trim() : null,
+    price: product.price ? String(product.price).trim() : "",
+      oldPrice: product.oldPrice ? String(product.oldPrice).trim() : "",
       imageUrl: product.imageUrl || "",
       file: null,
     }),
@@ -35,7 +35,7 @@ export default function EditProductModal({ product, onClose, onSubmit }) {
         <EditProductForm
           initialValues={initialValues}
           onSubmit={onSubmit}
-          loading={false}
+        loading={loading}
         />
       </ModalContent>
     </ModalOverlay>

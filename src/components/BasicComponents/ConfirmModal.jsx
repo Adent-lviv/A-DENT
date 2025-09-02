@@ -3,6 +3,8 @@
 import { useEffect } from "react";
 import { ModalOverlay } from "../EditProductModal/styles";
 import { Button, ModalContent } from "./styles";
+import { CardBtnEdit, CardBtnTrash } from "../ProductCard/styles";
+import { WrapperBase } from "../globalStyles";
 
 export default function ConfirmModal({ visible, onConfirm, onCancel }) {
   useEffect(() => {
@@ -24,14 +26,14 @@ export default function ConfirmModal({ visible, onConfirm, onCancel }) {
     <ModalOverlay>
       <ModalContent>
         <h4>Видалити цей товар?</h4>
-        <div style={{ marginTop: 20 }}>
-          <Button onClick={onConfirm}>
+        <WrapperBase style={{ gap:"20px",justifyContent: "center"}}>
+          <CardBtnEdit onClick={onConfirm}>
             Так
-          </Button>
-          <Button style={{ background: "#1c1c1c" }} onClick={onCancel}>
+          </CardBtnEdit>
+          <CardBtnTrash  onClick={onCancel}>
             Ні
-          </Button>
-        </div>
+          </CardBtnTrash>
+        </WrapperBase>
       </ModalContent>
     </ModalOverlay>
   );
