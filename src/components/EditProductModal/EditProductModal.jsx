@@ -5,6 +5,8 @@ import { CloseButton} from "../globalStyles.js";
 import { ModalOverlay, ModalContent } from "./styles";
 
 export default function EditProductModal({ product, onClose, onSubmit }) {
+  
+  
   const initialValues = useMemo(
     () => ({
       category: product.category || "",
@@ -12,14 +14,19 @@ export default function EditProductModal({ product, onClose, onSubmit }) {
       article: product.article || "",
       description: product.description || "",
       price: product.price || "",
-      oldPrice: product.oldPrice || "",
+      oldPrice: product.oldPrice ? product.oldPrice.trim() : null,
       imageUrl: product.imageUrl || "",
       file: null,
     }),
     [product] 
   );
+
+
+
   if (!product) return null;
-  console.log(initialValues)
+  console.log('initialValues', initialValues)
+
+
   return (
     <ModalOverlay onClick={onClose}>
       <ModalContent onClick={(e) => e.stopPropagation()}>

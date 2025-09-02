@@ -72,7 +72,7 @@ export const StyledTextarea = styled.textarea`
   border-radius: 8px;
 `;
 export const StyledError = styled(ErrorMessage)`
-  color: var(--red);
+  color: var(--accent);
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -152,7 +152,7 @@ export const RemoveFileButton = styled(FiX)`
   position: absolute;
   top: -5px;
   right: -5px;
-  background: var(--red);
+  background: var(--accent);
   color: white;
   border-radius: 50%;
   padding: 2px;

@@ -27,6 +27,11 @@ export default function ProductCard({
   onEdit,
   category,
 }) {
+
+
+
+
+  
   return (
     <ProductCardEl>
       {imageUrl && <CardImage imageUrl={imageUrl} />}

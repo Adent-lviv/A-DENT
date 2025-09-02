@@ -22,6 +22,18 @@ export default function AddProduct() {
   const [editingProduct, setEditingProduct] = useState(null); // товар для редагування
   const [isModalOpen, setIsModalOpen] = useState(false); // відкриття модалки
 
+useEffect(() => {
+  if (isModalOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [isModalOpen]);
+
+  
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -32,10 +44,14 @@ export default function AddProduct() {
       setProducts(
         querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
       );
+    
     } catch (err) {
       console.error("Помилка отримання товарів:", err);
     }
   }
+  console.log("fetchProducts", products);
+  
+
 
   async function handleAddProduct(values, { resetForm }) {
     if (!values.file) return toast.warning("Оберіть зображення");
@@ -108,7 +124,8 @@ export default function AddProduct() {
         article: values.article ?? "",
         description: values.description ?? "",
         price: values.price ? values.price : 0,
-        oldPrice: values.oldPrice ?? "",
+        oldPrice: values.oldPrice ? values.oldPrice : 0,
+
         category: values.category ?? "",
         imageUrl,
       };

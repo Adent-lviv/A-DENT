@@ -1,11 +1,25 @@
 // ConfirmModal.jsx
 
+import { useEffect } from "react";
 import { ModalOverlay } from "../EditProductModal/styles";
 import { Button, ModalContent } from "./styles";
 
 export default function ConfirmModal({ visible, onConfirm, onCancel }) {
-  if (!visible) return null;
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [visible]); 
 
+  
+  
+  if (!visible) return null;
+ 
   return (
     <ModalOverlay>
       <ModalContent>

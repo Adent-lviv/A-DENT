@@ -48,7 +48,6 @@ export default function AddProductForm({ onSubmit, loading }) {
         description: initialValues.description || "",
         price: initialValues.price || "",
         oldPrice: initialValues.oldPrice || "",
-
         file: null,
       }}
       validationSchema={validationSchema}

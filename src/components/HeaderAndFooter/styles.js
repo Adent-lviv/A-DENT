@@ -103,9 +103,11 @@ export const LogoSection = styled.div`
   h2 {
     font-size: 2rem;
     font-weight:700;
+    text-transform: uppercase;
     margin:0
   } h5 {
-    font-size: 1.2rem;
+   text-transform: uppercase;
+    font-size: 1rem;
     font-weight: 300;margin:0
   }
 `;
@@ -114,8 +116,9 @@ export const ContactSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  p {
+  a {
     margin: 0;
+    text-align:center;
     font-size: 0.95rem;
   }
 `;

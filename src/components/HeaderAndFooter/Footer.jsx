@@ -9,6 +9,7 @@ import {
   FreeDelivery,
   FooterWrapperLogo,
   FooterWrapperContact,
+  AddressLink,
 } from "./styles";
 import { FaFacebookF, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import logo from "../../../public/logo.png";
@@ -30,8 +31,12 @@ export default function Footer() {
         </FooterWrapperLogo>
         <FooterWrapperContact>
           <ContactSection>
-            <p>Телефон: +380 12 345 67 89</p>
-            <p>Email: info@example.com</p>
+         <AddressLink href="tel:+380931234567">
+                    +38 (093) 123-45-67
+                  </AddressLink>
+                  <AddressLink href="mailto:info@example.com">
+                    info@example.com
+                  </AddressLink>
           </ContactSection>
 
           <SocialSection>

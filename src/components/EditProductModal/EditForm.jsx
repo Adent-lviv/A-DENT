@@ -9,10 +9,11 @@ import {
   StyledSelect,
   StyledTextarea,
   SubmitButton,
+  WrapperPriceInput,
 } from "../AddProduct/AddProductForm/styles";
-import { WrapperBase } from "../globalStyles";
 
 export default function EditProductForm({ initialValues, onSubmit, loading }) {
+
   const validationSchema = Yup.object().shape({
     category: Yup.string(),
     name: Yup.string(),
@@ -23,6 +24,8 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
     file: Yup.mixed().nullable(),
   });
 
+
+   
   return (
     <Formik
       initialValues={initialValues}
@@ -75,7 +78,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
             onChange={(e) => setFieldValue("description", e.target.value)}
           />
           <StyledError name="description" component="div" />
-          <WrapperBase>
+          <WrapperPriceInput style={{flexWrap: 'wrap'}}>
             <StyledInput
               type="text"
               name="oldPrice"
@@ -91,7 +94,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
               value={values.price || ""}
               onChange={(e) => setFieldValue("price", e.target.value)}
             />
-          </WrapperBase>
+          </WrapperPriceInput>
 
           <StyledError name="price" component="div" />
 
