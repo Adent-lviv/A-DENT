@@ -19,7 +19,7 @@ import EditProductModal from "../EditProductModal/EditProductModal";
 export default function AddProduct() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null); // товар для редагування
+  const [editingProduct, setEditingProduct] = useState(null); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
 
   useEffect(() => {

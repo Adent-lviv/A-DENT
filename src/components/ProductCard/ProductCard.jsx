@@ -57,31 +57,33 @@ export default function ProductCard({
         </CardPrice>
         <CardDescr>{description}</CardDescr>
 
-        <CardBtns>
-          {onDelete && (
-            <CardBtnTrash onClick={() => onDelete(id)}>
-              <FaTrash />
-            </CardBtnTrash>
-          )}
-          {onEdit && (
-            <CardBtnEdit
-              onClick={() =>
-                onEdit({
-                  id,
-                  name,
-                  description,
-                  price,
-                  article,
-                  imageUrl,
-                  category,
-                  inStock,
-                })
-              }
-            >
-              <FaEdit />
-            </CardBtnEdit>
-          )}
-        </CardBtns>
+     {location.pathname === "/home" && (  
+          <CardBtns>
+            {onDelete && (
+              <CardBtnTrash onClick={() => onDelete(id)}>
+                <FaTrash />
+              </CardBtnTrash>
+            )}
+            {onEdit && (
+              <CardBtnEdit
+                onClick={() =>
+                  onEdit({
+                    id,
+                    name,
+                    description,
+                    price,
+                    article,
+                    imageUrl,
+                    category,
+                    inStock,
+                  })
+                }
+              >
+                <FaEdit />
+              </CardBtnEdit>
+            )}
+          </CardBtns>
+        )}
       </CardContent>
     </ProductCardEl>
   );

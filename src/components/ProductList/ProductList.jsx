@@ -12,7 +12,6 @@ import ConfirmModal from "../BasicComponents/ConfirmModal";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../api/firebase";
-import { FaExternalLinkAlt, FaHandPointer } from "react-icons/fa";
 
 export default function ProductList({ products, onDelete, onEdit }) {
   const categories = [...new Set(products.map((p) => p.category))];
@@ -21,7 +20,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
 
   const handleDeleteConfirmed = async (id) => {
     try {
-      await onDelete(id); // твоя функція, яка видаляє з Firebase
+      await onDelete(id); 
       toast.success(" Товар видалено!");
     } catch (err) {
       console.error("Помилка видалення товару:", err);
