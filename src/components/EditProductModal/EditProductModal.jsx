@@ -1,31 +1,31 @@
 import { useMemo } from "react";
 import EditProductForm from "./EditForm";
 
-import { CloseButton} from "../globalStyles.js";
+import { CloseButton } from "../globalStyles.js";
 import { ModalOverlay, ModalContent } from "./styles";
 
-export default function EditProductModal({ product, onClose, onSubmit, loading  }) {
-  
-  
+export default function EditProductModal({
+  product,
+  onClose,
+  onSubmit,
+  loading,
+}) {
   const initialValues = useMemo(
     () => ({
       category: product.category || "",
       name: product.name || "",
       article: product.article || "",
       description: product.description || "",
-    price: product.price ? String(product.price).trim() : "",
+      price: product.price ? String(product.price).trim() : "",
       oldPrice: product.oldPrice ? String(product.oldPrice).trim() : "",
       imageUrl: product.imageUrl || "",
       file: null,
+        inStock: product.inStock ?? true,
     }),
-    [product] 
+    [product]
   );
 
-
-
   if (!product) return null;
-  console.log('initialValues', initialValues)
-
 
   return (
     <ModalOverlay onClick={onClose}>
@@ -35,7 +35,7 @@ export default function EditProductModal({ product, onClose, onSubmit, loading  
         <EditProductForm
           initialValues={initialValues}
           onSubmit={onSubmit}
-        loading={loading}
+          loading={loading}
         />
       </ModalContent>
     </ModalOverlay>

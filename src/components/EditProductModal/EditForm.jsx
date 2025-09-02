@@ -11,9 +11,9 @@ import {
   SubmitButton,
   WrapperPriceInput,
 } from "../AddProduct/AddProductForm/styles";
+import { Slider, ToggleInput, ToggleWrapper } from "./styles";
 
 export default function EditProductForm({ initialValues, onSubmit, loading }) {
-
   const validationSchema = Yup.object().shape({
     category: Yup.string(),
     name: Yup.string(),
@@ -22,10 +22,9 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
     price: Yup.string(),
     oldPrice: Yup.string(),
     file: Yup.mixed().nullable(),
+    inStock: Yup.boolean(),
   });
 
-
-   
   return (
     <Formik
       initialValues={initialValues}
@@ -35,6 +34,15 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
     >
       {({ values, setFieldValue }) => (
         <StyledForm as={Form}>
+          <ToggleWrapper>
+            <ToggleInput
+              type="checkbox"
+              checked={values.inStock || false}
+              onChange={(e) => setFieldValue("inStock", e.target.checked)}
+            />
+            <Slider /> <p>Наявність</p>
+          </ToggleWrapper>
+
           <StyledSelect
             name="category"
             value={values.category || ""}
@@ -78,7 +86,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
             onChange={(e) => setFieldValue("description", e.target.value)}
           />
           <StyledError name="description" component="div" />
-          <WrapperPriceInput style={{flexWrap: 'wrap'}}>
+          <WrapperPriceInput style={{ flexWrap: "wrap" }}>
             <StyledInput
               type="text"
               name="oldPrice"

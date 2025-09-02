@@ -93,20 +93,44 @@ export const CardBtnEdit = styled.button`
     color: var(--main-text);
   }
 `;
-export const CardImage = styled.div`
+export const CardImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
   height: 45%;
   min-height: 45%;
   max-height: 45%;
-  width: 100%;
   border-radius: 12px;
+  overflow: hidden;
+`;
+
+export const CardImage = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url(${(props) => props.imageUrl});
   background-size: cover;
   background-position: center;
-  background-image: url(${(props) => props.imageUrl});
+  filter: ${(props) => (props.inStock ? "none" : "blur(4px)")};
 `;
+
+export const StockOverlay = styled.div`
+  display: ${(props) => (props.inStock ? "none" : "flex")};
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: rgba(0,0,0,0.4);
+
+`;
+
 export const HeaderCard = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: center;align-items: flex-start;
   gap: 10px;
 `;
 export const ArticleText = styled.p`

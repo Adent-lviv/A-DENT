@@ -9,15 +9,15 @@ import { auth } from "../../api/firebase";
 
 export default function ProductList({ products, onDelete, onEdit }) {
   const categories = [...new Set(products.map((p) => p.category))];
-    const [user] = useAuthState(auth);
- const [confirmId, setConfirmId] = useState(null);
+  const [user] = useAuthState(auth);
+  const [confirmId, setConfirmId] = useState(null);
 
   const handleDeleteConfirmed = async (id) => {
-     try {
+    try {
       await onDelete(id); // твоя функція, яка видаляє з Firebase
       toast.success(" Товар видалено!");
-     } catch (err) {
-       console.error("Помилка видалення товару:", err);
+    } catch (err) {
+      console.error("Помилка видалення товару:", err);
       toast.error(" Не вдалося видалити товар");
     } finally {
       setConfirmId(null);
@@ -31,8 +31,6 @@ export default function ProductList({ products, onDelete, onEdit }) {
     }
   };
 
-
-  
   return (
     <Container>
       <CategoryNav>
@@ -63,6 +61,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
                   oldPrice,
                   imageUrl,
                   article,
+                  inStock
                 }) => (
                   <ProductCard
                     key={id}
@@ -73,16 +72,17 @@ export default function ProductList({ products, onDelete, onEdit }) {
                     price={price}
                     oldPrice={oldPrice}
                     article={article}
+                    inStock={inStock}
                     imageUrl={imageUrl}
-                     onDelete={user ? () => setConfirmId(id) : null}
-  onEdit={user ? onEdit : null}
+                    onDelete={user ? () => setConfirmId(id) : null}
+                    onEdit={user ? onEdit : null}
                   />
                 )
               )}
           </ProductListEL>
         </div>
       ))}
-       <ConfirmModal
+      <ConfirmModal
         visible={!!confirmId}
         onConfirm={() => handleDeleteConfirmed(confirmId)}
         onCancel={() => setConfirmId(null)}

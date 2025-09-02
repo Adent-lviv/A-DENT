@@ -70,6 +70,28 @@ export const StyledTextarea = styled.textarea`
   }
   resize: vertical;
   border-radius: 8px;
+  &::-webkit-scrollbar {
+    width: 6px; 
+    
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 3px;
+  }
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+
+
 `;
 export const StyledError = styled(ErrorMessage)`
   color: var(--accent);

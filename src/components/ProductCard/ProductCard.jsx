@@ -1,4 +1,3 @@
-
 import {
   ArticleText,
   CardBtnEdit,
@@ -7,12 +6,14 @@ import {
   CardContent,
   CardDescr,
   CardImage,
+  CardImageWrapper,
   CardName,
   CardPrice,
   HeaderCard,
   NewPrice,
   OldPrice,
   ProductCardEl,
+  StockOverlay,
 } from "./styles";
 import { FaTrash, FaEdit } from "react-icons/fa";
 
@@ -26,13 +27,18 @@ export default function ProductCard({
   onDelete,
   article,
   onEdit,
-  category,inStock,
-    onToggleStock,
+  category,
+  inStock,
 }) {
-
   return (
     <ProductCardEl>
-      {imageUrl && <CardImage imageUrl={imageUrl} />}
+      {imageUrl && (
+        <CardImageWrapper>
+          <CardImage imageUrl={imageUrl} inStock={inStock} />
+          <StockOverlay inStock={inStock}>Немає в наявності</StockOverlay>
+        </CardImageWrapper>
+      )}
+
       <CardContent>
         <HeaderCard>
           <CardName>{name}</CardName>
@@ -50,16 +56,7 @@ export default function ProductCard({
           )}
         </CardPrice>
         <CardDescr>{description}</CardDescr>
-   {onToggleStock &&  (<div style={{ marginTop: 10 }}>
-          <label>
-            <input
-              type="checkbox"
-              checked={inStock}
-              onChange={() => onToggleStock(id, !inStock)}
-            />{" "}
-            В наявності
-          </label>
-        </div>) }
+
         <CardBtns>
           {onDelete && (
             <CardBtnTrash onClick={() => onDelete(id)}>
@@ -77,6 +74,7 @@ export default function ProductCard({
                   article,
                   imageUrl,
                   category,
+                  inStock,
                 })
               }
             >
