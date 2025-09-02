@@ -50,7 +50,7 @@ export const CloseButton = styled(FiX)`
   border-radius: 50%;
   padding: 4px;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.7s ease, background 0.2s ease;
   animation: ${fadeIn} 0.3s ease forwards;
 
   &:hover {

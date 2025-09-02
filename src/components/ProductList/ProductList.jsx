@@ -1,11 +1,18 @@
 import { useRef, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Container, Divider } from "../globalStyles";
-import { CategoryNav, CategoryNavItem, ProductListEL } from "./styles";
+import {
+  BorBtn,
+  CategoryNav,
+  CategoryNavItem,
+  ClickIcon,
+  ProductListEL,
+} from "./styles";
 import ConfirmModal from "../BasicComponents/ConfirmModal";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../api/firebase";
+import { FaExternalLinkAlt, FaHandPointer } from "react-icons/fa";
 
 export default function ProductList({ products, onDelete, onEdit }) {
   const categories = [...new Set(products.map((p) => p.category))];
@@ -48,7 +55,16 @@ export default function ProductList({ products, onDelete, onEdit }) {
           style={{ marginBottom: 20 }}
         >
           <Divider>{category}</Divider>
-
+          {category === "Бори" && (
+            <BorBtn
+              href="https://verdent.pl/images/system/pdf/en/dental_burs_2017.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Переглянути повний каталог
+              <ClickIcon size={20} />
+            </BorBtn>
+          )}
           <ProductListEL>
             {products
               .filter((product) => product.category === category)
@@ -61,7 +77,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
                   oldPrice,
                   imageUrl,
                   article,
-                  inStock
+                  inStock,
                 }) => (
                   <ProductCard
                     key={id}

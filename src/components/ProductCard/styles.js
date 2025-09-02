@@ -124,14 +124,15 @@ export const StockOverlay = styled.div`
   color: white;
   font-weight: bold;
   font-size: 18px;
-  background-color: rgba(0,0,0,0.4);
-
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 export const HeaderCard = styled.div`
   display: flex;
-  align-items: center;align-items: flex-start;
+  align-items: center;
+  align-items: flex-start;
   gap: 10px;
+  justify-content: space-between;
 `;
 export const ArticleText = styled.p`
   font-size: 10px;

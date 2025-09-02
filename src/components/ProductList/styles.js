@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { FaHandPointer } from "react-icons/fa";
 
 export const ProductListEL = styled.ul`
   display: flex;
@@ -27,13 +28,47 @@ export const CategoryNavItem = styled.button`
   cursor: pointer;
   font-size: 1rem;
 
-
   &:hover {
     color: var(--main-bg);
-    background: var(--accent); /* змінюємо колір при наведенні */
+    background: var(--accent);
   }
 
   @media (min-width: 768px) {
     font-size: 1.1rem;
   }
+`;
+const pulseClick = keyframes`
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+`;
+export const BorBtn = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 10px;
+  padding: 6px 12px;
+  width: fit-content;
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+
+  position: relative;
+    transition: transform 1s ease, background 0.2s ease;
+
+  
+    &:hover {
+      transform: scale(1.1);
+
+      background: var(--accent); 
+    }
+`;
+export const ClickIcon = styled(FaHandPointer)`
+  animation: ${pulseClick} 1s infinite;
+
+  position: absolute;
+  right: 0px;
+  bottom: -10px;
 `;
