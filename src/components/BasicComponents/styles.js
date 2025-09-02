@@ -29,6 +29,7 @@ export const ButtonToTop = styled.button`
   border-radius: 50%;
   padding: 12px 12px 9px 12px;
   cursor: pointer;
+  color:var(--main-bg);
   box-shadow: 0 0 15px rgb(82 82 82 / 75%);
   display : ${(props) => (props.$visible ? "block" : "none")};
   opacity: ${(props) => (props.$visible ? 1 : 0)};

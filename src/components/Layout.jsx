@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{minHeight:"100vh"}}>
         <Outlet /> 
       </main>
       <Footer />
