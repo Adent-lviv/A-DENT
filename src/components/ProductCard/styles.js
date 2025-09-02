@@ -86,7 +86,7 @@ export const CardBtnTrash = styled.button`
   }
 `;
 export const CardBtnEdit = styled.button`
-  background-color: var(--main-text);
+  background-color: var(--main-text); color: var(--main-bg);
   &:hover {
     background-color: var(--accent);
 

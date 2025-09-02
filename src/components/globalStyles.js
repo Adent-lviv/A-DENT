@@ -77,7 +77,7 @@ export const Divider = styled.div`
   align-items: center;
   text-align: center;
   margin: 20px 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   &::before,
   &::after {
     content: "";
@@ -90,6 +90,10 @@ export const Divider = styled.div`
   }
   &:not(:empty)::after {
     margin-left: 0.75em;
+
+      @media (min-width: 768px) {
+     font-size: 2rem;
+  }
   }
 `;
 export const Title = styled.h1`

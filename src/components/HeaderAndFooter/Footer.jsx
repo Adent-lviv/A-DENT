@@ -13,8 +13,11 @@ import {
 } from "./styles";
 import { FaFacebookF, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import logo from "../../../public/logo.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+
+    const navigate = useNavigate();
   return (
     <FooterWrapper>
       <FreeDelivery>
@@ -23,7 +26,7 @@ export default function Footer() {
 
       <FooterTop>
         <FooterWrapperLogo>
-          <LogoSection>
+          <LogoSection  onClick={() => navigate("/")}>
             <img src={logo} alt="Logo" />
             <h2>A-dent</h2>
             <h5>Dental Shop</h5>

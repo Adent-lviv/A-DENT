@@ -10,12 +10,14 @@ import {
   TextLogoContainer,
 } from "./styles";
 import logo from "../../../public/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+   const navigate = useNavigate();
   return (
     <HeaderWrapper>
       <Container style={{ display: "flex", flexDirection: "row" }}>
-        <LogoContainer>
+        <LogoContainer  onClick={() => navigate("/")}>
           <ImgLogo src={logo} alt="Logo" />
           <TextLogoContainer>
           

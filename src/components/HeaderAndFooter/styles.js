@@ -8,6 +8,7 @@ export const HeaderWrapper = styled.div`
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
+  cursor:pointer;
 `;
 export const TextLogoContainer = styled.div`
   display: flex;
@@ -103,6 +104,7 @@ export const LogoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor:pointer;
   img {
     width: 60px;
     margin-bottom: 10px;
