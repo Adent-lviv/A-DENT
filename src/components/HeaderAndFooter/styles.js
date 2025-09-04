@@ -33,8 +33,22 @@ export const DescrLogo = styled.p`
   color: var(--main-bg);
   text-align: center;
 `;
+const bounceRotate = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  40% {
+    transform: translateY(-8px) rotate(-10deg);
+  }
+  60% {
+    transform: translateY(-7px) rotate(5deg);
+  }
+`;
+
 export const ImgLogo = styled.img`
   max-width: 40px;
+   animation: ${bounceRotate} 2.5s ease infinite;
+  transform-origin: center bottom; 
 `;
 
 export const Address = styled.address`
