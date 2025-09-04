@@ -64,11 +64,8 @@ export default function AddProductForm({ onSubmit, loading }) {
             <option value="">Оберіть категорію</option>
             <option value="Бори">Бори</option>
             <option value="Інструменти">Інструменти</option>
-            <option value="Матеріали">Матеріали</option>
-            <option value="Ендодонтія">Ендодонтія</option>
             <option value="Шовний матеріал">Шовний матеріал</option>
-            <option value="Імплантологія">Імплантологія</option>
-            <option value="Хірургія">Хірургія</option>
+            <option value="Імпланти">Імпланти</option>
           </StyledSelect>
           <StyledError name="category" component="div" />
 

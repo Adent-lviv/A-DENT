@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { ButtonToTop } from "./styles";
 
-
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
 
@@ -18,10 +17,11 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-
-
   return (
-    <ButtonToTop onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}  $visible={visible}>
+    <ButtonToTop
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      $visible={visible}
+    >
       <FaArrowUp size={16} />
     </ButtonToTop>
   );

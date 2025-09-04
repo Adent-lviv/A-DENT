@@ -1,23 +1,19 @@
-
 import {
   FooterWrapper,
   FooterTop,
   FooterBottom,
   LogoSection,
-  ContactSection,
-  SocialSection,
   FreeDelivery,
   FooterWrapperLogo,
   FooterWrapperContact,
-  AddressLink,
+  ImgPartners,
 } from "./styles";
-import { FaFacebookF, FaInstagram, FaTelegramPlane } from "react-icons/fa";
 import logo from "../../../public/logo.png";
 import { useNavigate } from "react-router-dom";
+import partners from "../../../public/partners.png";
 
 export default function Footer() {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <FooterWrapper>
       <FreeDelivery>
@@ -26,43 +22,18 @@ export default function Footer() {
 
       <FooterTop>
         <FooterWrapperLogo>
-          <LogoSection  onClick={() => navigate("/")}>
+          <LogoSection onClick={() => navigate("/")}>
             <img src={logo} alt="Logo" />
             <h2>A-dent</h2>
             <h5>Dental Shop</h5>
           </LogoSection>
         </FooterWrapperLogo>
         <FooterWrapperContact>
-          <ContactSection>
-         <AddressLink href="tel:+380931234567">
-                    +38 (093) 123-45-67
-                  </AddressLink>
-                  <AddressLink href="mailto:info@example.com">
-                    info@example.com
-                  </AddressLink>
-          </ContactSection>
-
-          <SocialSection>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram />
-            </a>
-            <a href="https://t.me/username" target="_blank" rel="noopener noreferrer"><FaTelegramPlane /></a>
-          </SocialSection>
+          <ImgPartners src={partners} alt="Logo" />
         </FooterWrapperContact>
       </FooterTop>
 
-      <FooterBottom>© 2025 Adent.</FooterBottom>
+      <FooterBottom>© 2025 A-dent.</FooterBottom>
     </FooterWrapper>
   );
 }

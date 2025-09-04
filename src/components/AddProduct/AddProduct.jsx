@@ -19,8 +19,8 @@ import EditProductModal from "../EditProductModal/EditProductModal";
 export default function AddProduct() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [editingProduct, setEditingProduct] = useState(null); 
-  const [isModalOpen, setIsModalOpen] = useState(false); 
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -130,7 +130,7 @@ export default function AddProduct() {
       await fetchProducts();
       toast.success("Товар оновлено!");
       setEditingProduct(null);
-      setIsModalOpen(false); // <- закриваємо модалку
+      setIsModalOpen(false);
     } catch (err) {
       console.error(err);
       toast.error("Не вдалося оновити товар");

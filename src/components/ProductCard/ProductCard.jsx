@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import {
   ArticleText,
   CardBtnEdit,
@@ -30,12 +31,15 @@ export default function ProductCard({
   category,
   inStock,
 }) {
+
+
+    const location = useLocation();
   return (
     <ProductCardEl>
       {imageUrl && (
         <CardImageWrapper>
-          <CardImage imageUrl={imageUrl} inStock={inStock} />
-          <StockOverlay inStock={inStock}>Немає в наявності</StockOverlay>
+          <CardImage  $imageUrl={imageUrl}  $inStock={inStock} />
+          <StockOverlay  $inStock={inStock}>Немає в наявності</StockOverlay>
         </CardImageWrapper>
       )}
 
@@ -55,7 +59,7 @@ export default function ProductCard({
             <NewPrice>{price} </NewPrice>
           )}
         </CardPrice>
-        <CardDescr>{description}</CardDescr>
+        <CardDescr  $page={location.pathname}>{description}</CardDescr>
 
      {location.pathname === "/home" && (  
           <CardBtns>

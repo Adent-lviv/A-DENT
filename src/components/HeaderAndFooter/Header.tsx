@@ -25,14 +25,7 @@ const Header = () => {
             <DescrLogo>Dental Shop</DescrLogo>
           </TextLogoContainer>
         </LogoContainer>
-        <Address>
-          <AddressLink href="tel:+380931234567">
-            +38 (093) 123-45-67
-          </AddressLink>
-          <AddressLink href="mailto:info@example.com">
-            info@example.com
-          </AddressLink>
-        </Address>
+        
       </Container>
     </HeaderWrapper>
   );
