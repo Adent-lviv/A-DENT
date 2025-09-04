@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { Container, Divider } from "../globalStyles";
 import {
-  BorBtn,
+  PdfBtn,
   CategoryNav,
   CategoryNavItem,
   ClickIcon,
@@ -55,14 +55,24 @@ export default function ProductList({ products, onDelete, onEdit }) {
         >
           <Divider>{category}</Divider>
           {category === "Бори" && (
-            <BorBtn
-              href="https://verdent.pl/images/system/pdf/en/dental_burs_2017.pdf"
+            <PdfBtn
+              href="https://drive.google.com/file/d/10DybSyTbEGgMPGHr9oFfe1wrHCheXJ6x/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
               Переглянути повний каталог
               <ClickIcon size={20} />
-            </BorBtn>
+            </PdfBtn>
+          )}
+           {category === "Імпланти" && (
+            <PdfBtn
+              href="https://drive.google.com/file/d/10DybSyTbEGgMPGHr9oFfe1wrHCheXJ6x/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Переглянути повний каталог
+              <ClickIcon size={20} />
+            </PdfBtn>
           )}
           <ProductListEL>
             {products

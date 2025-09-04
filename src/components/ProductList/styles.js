@@ -6,7 +6,7 @@ export const ProductListEL = styled.ul`
 
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
   align-items: flex-start;
   list-style: none;
   padding: 0;
@@ -44,7 +44,22 @@ const pulseClick = keyframes`
   75% { transform: translateY(-2px); }
   100% { transform: translateY(0); }
 `;
-export const BorBtn = styled.a`
+const pdfPulse = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 var(--accent); /* колір можна замінити на var(--accent) */
+   transform: scale(1); opacity: 1;
+    }
+  70% {
+    box-shadow: 0 0 15px 5px rgba(255, 90, 95, 0); 
+    transform: scale(1.05); opacity: 0.8; 
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 90, 95, 0);
+    transform: scale(1); opacity: 1; 
+  }
+`;
+
+export const PdfBtn = styled.a`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -54,16 +69,15 @@ export const BorBtn = styled.a`
   background-color: transparent;
   border: 2px solid var(--accent);
   border-radius: 12px;
-
+  animation: ${pdfPulse} 3s infinite;
   position: relative;
-    transition: transform 1s ease, background 0.2s ease;
+  transition: transform 1s ease, background 0.2s ease;
 
-  
-    &:hover {
-      transform: scale(1.1);
+  &:hover {
+    transform: scale(1.1);
 
-      background: var(--accent); 
-    }
+    background: var(--accent);
+  }
 `;
 export const ClickIcon = styled(FaHandPointer)`
   animation: ${pulseClick} 1s infinite;

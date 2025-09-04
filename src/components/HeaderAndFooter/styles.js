@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { keyframes } from "styled-components";
 export const HeaderWrapper = styled.div`
   display: flex;
-  background-color:  var(--main-text);
-  padding: 15px 0px ;
+  background-color: var(--main-text);
+  padding: 15px 0px;
 `;
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
+      justify-content: center;
+      flex-direction: column;
 `;
 export const TextLogoContainer = styled.div`
   display: flex;
@@ -17,10 +19,12 @@ export const TextLogoContainer = styled.div`
   width: auto;
 `;
 export const NameLogo = styled.h1`
+  font-family: "Exo 2", sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--accent);
   margin: 0px;
-  font-size: 1.4rem;
+  font-size: 2.5rem;
 `;
 export const DescrLogo = styled.p`
   text-transform: uppercase;
@@ -30,7 +34,7 @@ export const DescrLogo = styled.p`
   text-align: center;
 `;
 export const ImgLogo = styled.img`
-  max-width: 60px;
+  max-width: 40px;
 `;
 
 export const Address = styled.address`
@@ -43,14 +47,11 @@ export const AddressLink = styled.a`
   color: var(--main-bg);
   font-size: 0.7rem;
   transition: transform 0.3s, color 0.3s;
-   &:hover {
-      transform: scale(1.1);
-      color: var(--accent);
-    }
-
+  &:hover {
+    transform: scale(1.1);
+    color: var(--accent);
+  }
 `;
-
-
 
 export const pulse = keyframes`
   0% { transform: scale(1); opacity: 1; }
@@ -69,15 +70,15 @@ export const FooterWrapper = styled.footer`
 
 export const FreeDelivery = styled.div`
   background: var(--accent);
-  max-width:80%;
-  width:auto;
+  max-width: 80%;
+  width: auto;
   color: var(--main-bg);
   padding: 8px 16px;
   border-radius: 12px;
   margin-bottom: 30px;
   font-weight: 600;
   font-size: 1.2rem;
-  z-index:500;
+  z-index: 500;
   animation: ${pulse} 3s infinite;
   text-align: center;
 `;
@@ -86,9 +87,9 @@ export const FooterWrapperLogo = styled.div`
 `;
 export const FooterWrapperContact = styled.div`
   width: auto;
-  display:flex;
-      flex-direction: column;
-      justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 export const FooterTop = styled.div`
@@ -96,54 +97,36 @@ export const FooterTop = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
+  gap:50px;
 
   margin-bottom: 30px;
+    @media (min-width: 480px) {
+    gap:0px;
+  }
 `;
 
 export const LogoSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
   img {
     width: 60px;
     margin-bottom: 10px;
   }
   h2 {
     font-size: 2rem;
-    font-weight:700;
+    font-weight: 700;
     text-transform: uppercase;
-    margin:0
-  } h5 {
-   text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 300;margin:0
-  }
-`;
-
-export const ContactSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  a {
     margin: 0;
-    text-align:center;
-    font-size: 0.95rem;
+    font-family: "Exo 2", sans-serif;
+    font-weight: 500;
   }
-`;
-
-export const SocialSection = styled.div`
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  a {
-    color: #fff;
-    font-size: 1.3rem;
-    transition: transform 0.3s, color 0.3s;
-    &:hover {
-      transform: rotate(15deg) scale(1.3);
-      color: var(--accent);
-    }
+  h5 {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
   }
 `;
 
@@ -153,4 +136,13 @@ export const FooterBottom = styled.div`
   text-align: center;
   font-size: 0.85rem;
   color: #aaa;
+`;
+export const ImgPartners = styled.img`
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 30px;
+  @media (min-width: 460px) {
+    max-width: 300px;
+    margin-bottom: 0px;
+  }
 `;

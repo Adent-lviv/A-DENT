@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProductCardEl = styled.li`
   border: 1px solid #ccc;
-  margin-bottom: 10px;
+
   padding: 10px;
   max-width: 300px;
   height: 500px;
@@ -19,11 +19,12 @@ export const CardName = styled.h5`
 `;
 export const CardDescr = styled.p`
   font-size: 0.8rem;
-  max-height: 110px;
-  height: 110px;
+  max-height: 150px;
+  height: 100%;
   overflow-y: auto;
   margin: 0;
-  margin-bottom: 10px;
+
+
 
   /* стилізація скролу */
   &::-webkit-scrollbar {
@@ -48,10 +49,19 @@ export const CardDescr = styled.p`
 
   white-space: pre-wrap; /* зберігає перенос рядків */
   word-wrap: break-word; /* переносить довгі слова */
+
+  ${(props) =>
+    props.$page === "/home" &&
+    `    max-height: 110px;
+       margin-bottom: 15px;
+    `}
+
 `;
 export const CardPrice = styled.p`
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+    max-height:24px;
+  height:100%;
 `;
 export const OldPrice = styled.span`
   text-decoration: line-through;
@@ -68,7 +78,7 @@ export const CardContent = styled.div`
   padding-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 export const CardBtns = styled.div`
   display: flex;
@@ -86,10 +96,10 @@ export const CardBtnTrash = styled.button`
   }
 `;
 export const CardBtnEdit = styled.button`
-  background-color: var(--main-text); color: var(--main-bg);
+  background-color: var(--main-text);
+  color: var(--main-bg);
   &:hover {
     background-color: var(--accent);
-
     color: var(--main-text);
   }
 `;
@@ -106,14 +116,14 @@ export const CardImageWrapper = styled.div`
 export const CardImage = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${(props) => props.imageUrl});
+  background-image: url(${(props) => props.$imageUrl});
   background-size: cover;
   background-position: center;
-  filter: ${(props) => (props.inStock ? "none" : "blur(4px)")};
+  filter: ${(props) => (props.$inStock ? "none" : "blur(4px)")};
 `;
 
 export const StockOverlay = styled.div`
-  display: ${(props) => (props.inStock ? "none" : "flex")};
+  display: ${(props) => (props.$inStock ? "none" : "flex")};
   position: absolute;
   top: 0;
   left: 0;
@@ -132,10 +142,19 @@ export const HeaderCard = styled.div`
   align-items: center;
   align-items: flex-start;
   gap: 10px;
+  max-height:52px;
+  height:100%;
+  margin-bottom:15px;
   justify-content: space-between;
 `;
 export const ArticleText = styled.p`
   font-size: 10px;
   font-weight: 500;
+  margin:0;
+  margin-top:3px;
   color: gray;
+    @media (min-width: 768px) {
+    font-size: 12px;
+      margin-top:5px;
+  }
 `;
