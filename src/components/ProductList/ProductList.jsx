@@ -20,7 +20,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
 
   const handleDeleteConfirmed = async (id) => {
     try {
-      await onDelete(id); 
+      await onDelete(id);
       toast.success(" Товар видалено!");
     } catch (err) {
       console.error("Помилка видалення товару:", err);
@@ -36,18 +36,21 @@ export default function ProductList({ products, onDelete, onEdit }) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+  const order = ["Шовний матеріал", "Інструменти", "Бори", "Імпланти"];
+  const sortedCategories = [...categories].sort(
+    (a, b) => order.indexOf(a) - order.indexOf(b)
+  );
   return (
     <Container>
       <CategoryNav>
-        {categories.map((category, i) => (
+        {sortedCategories.map((category, i) => (
           <CategoryNavItem key={category} onClick={() => handleScroll(i)}>
             {category}
           </CategoryNavItem>
         ))}
       </CategoryNav>
 
-      {categories.map((category, i) => (
+      {sortedCategories.map((category, i) => (
         <div
           key={category}
           ref={(el) => (categoryRefs.current[i] = el)}
@@ -64,7 +67,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
               <ClickIcon size={20} />
             </PdfBtn>
           )}
-           {category === "Імпланти" && (
+          {category === "Імпланти" && (
             <PdfBtn
               href="https://drive.google.com/file/d/10DybSyTbEGgMPGHr9oFfe1wrHCheXJ6x/view?usp=sharing"
               target="_blank"
