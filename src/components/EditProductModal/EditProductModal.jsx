@@ -13,9 +13,9 @@ export default function EditProductModal({
   const initialValues = useMemo(
     () => ({
       category: product.category || "",
-      name: product.name || "",
-      article: product.article || "",
-      description: product.description || "",
+      name: product.name.trim() || "",
+      article: product.article.trim() || "",
+      description: product.description.trim() || "",
       price: product.price ? String(product.price).trim() : "",
       oldPrice: product.oldPrice ? String(product.oldPrice).trim() : "",
       imageUrl: product.imageUrl || "",

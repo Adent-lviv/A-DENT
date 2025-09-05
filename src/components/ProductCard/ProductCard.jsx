@@ -80,6 +80,7 @@ export default function ProductCard({
                     imageUrl,
                     category,
                     inStock,
+                    oldPrice
                   })
                 }
               >

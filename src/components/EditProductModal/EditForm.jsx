@@ -5,7 +5,7 @@ import {
   StyledError,
   StyledForm,
   StyledInput,
-  StyledLabel,
+ 
   StyledSelect,
   StyledTextarea,
   SubmitButton,
@@ -14,6 +14,9 @@ import {
 import { Slider, ToggleInput, ToggleWrapper } from "./styles";
 
 export default function EditProductForm({ initialValues, onSubmit, loading }) {
+  
+  console.log("EditProductForm",initialValues)
+  
   const validationSchema = Yup.object().shape({
     category: Yup.string(),
     name: Yup.string(),
@@ -24,6 +27,8 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
     file: Yup.mixed().nullable(),
     inStock: Yup.boolean(),
   });
+
+
 
   return (
     <Formik
@@ -88,7 +93,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
               type="text"
               name="oldPrice"
               placeholder="Стара Ціна"
-              value={values.oldPrice || ""}
+               value={values.oldPrice}
               onChange={(e) => setFieldValue("oldPrice", e.target.value)}
             />
 

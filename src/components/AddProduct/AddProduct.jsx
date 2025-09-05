@@ -56,10 +56,10 @@ export default function AddProduct() {
       // Завантаження файлу на Cloudinary
       const formData = new FormData();
       formData.append("file", values.file);
-      formData.append("upload_preset", "Dent-ua");
+      formData.append("upload_preset", "A-dent");
 
       const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dw8udv2vd/image/upload",
+        "https://api.cloudinary.com/v1_1/dqeroxhuh/image/upload",
         { method: "POST", body: formData }
       );
       const data = await res.json();
@@ -105,10 +105,10 @@ export default function AddProduct() {
       if (values.file) {
         const formData = new FormData();
         formData.append("file", values.file);
-        formData.append("upload_preset", "Dent-ua");
+        formData.append("upload_preset", "A-dent");
 
         const res = await fetch(
-          "https://api.cloudinary.com/v1_1/dw8udv2vd/image/upload",
+          "https://api.cloudinary.com/v1_1/dqeroxhuh/image/upload",
           { method: "POST", body: formData }
         );
         const data = await res.json();
@@ -119,8 +119,8 @@ export default function AddProduct() {
         name: values.name ?? "",
         article: values.article ?? "",
         description: values.description ?? "",
-        price: values.price ? values.price : 0,
-        oldPrice: values.oldPrice ? values.oldPrice : 0,
+        price: values.price ?? "",
+        oldPrice: values.oldPrice ?? "",
         category: values.category ?? "",
         imageUrl,
         inStock: values.inStock ?? true,
@@ -138,7 +138,8 @@ export default function AddProduct() {
       setLoading(false);
     }
   }
-
+  console.log("editingProduct", editingProduct)
+   console.log("ProductList",products)
   return (
     <>
       <AddWrapper>
