@@ -59,7 +59,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
           <Divider>{category}</Divider>
           {category === "Бори" && (
             <PdfBtn
-              href="https://drive.google.com/file/d/10DybSyTbEGgMPGHr9oFfe1wrHCheXJ6x/view?usp=sharing"
+              href="https://drive.google.com/file/d/1siwWTWjtmLYP_wa6NXL1FF2ASISbbYlN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -69,7 +69,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
           )}
           {category === "Імпланти" && (
             <PdfBtn
-              href="https://drive.google.com/file/d/10DybSyTbEGgMPGHr9oFfe1wrHCheXJ6x/view?usp=sharing"
+              href="https://drive.google.com/file/d/1zCU60ta4Ww55v13IxCzzr9QxEWb75COT/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
