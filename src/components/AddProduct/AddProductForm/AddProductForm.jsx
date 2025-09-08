@@ -16,12 +16,11 @@ import {
   SubmitButton,
   WrapperPriceInput,
 } from "./styles";
-import { WrapperBase } from "../../globalStyles";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string().required("Виберіть категорію"),
-  name: Yup.string().required("Вкажіть назву"),
-  article: Yup.string().required("Вкажіть артикул"),
+  name: Yup.string().required("Вкажіть назву").max(32, "Назва занадто довга"),
+  article: Yup.string().required("Вкажіть артикул").max(14, "Артикул занадто довгий"),
   description: Yup.string(),
   oldPrice: Yup.string(),
   price: Yup.string().required("Вкажіть ціну"),
