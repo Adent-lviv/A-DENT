@@ -152,6 +152,8 @@ export const ArticleText = styled.p`
   font-weight: 500;
   margin:0;
   margin-top:3px;
+  max-width:34px;
+   word-wrap: break-word;
   color: gray;
     @media (min-width: 768px) {
     font-size: 12px;
