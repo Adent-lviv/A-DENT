@@ -31,19 +31,21 @@ export default function ProductCard({
   category,
   inStock,
 }) {
+  const optimizeImage = (url, width = 600) => {
+    if (!url) return url;
+    return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
+  };
 
-const optimizeImage = (url, width = 600) => {
-  if (!url) return url;
-  return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
-};
-
-    const location = useLocation();
+  const location = useLocation();
   return (
     <ProductCardEl>
       {imageUrl && (
         <CardImageWrapper>
-          <CardImage    $imageUrl={optimizeImage(imageUrl, 600)}  $inStock={inStock} />
-          <StockOverlay  $inStock={inStock}>Немає в наявності</StockOverlay>
+          <CardImage
+            $imageUrl={optimizeImage(imageUrl, 600)}
+            $inStock={inStock}
+          />
+          <StockOverlay $inStock={inStock}>Немає в наявності</StockOverlay>
         </CardImageWrapper>
       )}
 
@@ -63,9 +65,9 @@ const optimizeImage = (url, width = 600) => {
             <NewPrice>{price} </NewPrice>
           )}
         </CardPrice>
-        <CardDescr  $page={location.pathname}>{description}</CardDescr>
+        <CardDescr $page={location.pathname}>{description}</CardDescr>
 
-     {location.pathname === "/home" && (  
+        {location.pathname === "/home" && (
           <CardBtns>
             {onDelete && (
               <CardBtnTrash onClick={() => onDelete(id)}>
@@ -84,7 +86,7 @@ const optimizeImage = (url, width = 600) => {
                     imageUrl,
                     category,
                     inStock,
-                    oldPrice
+                    oldPrice,
                   })
                 }
               >

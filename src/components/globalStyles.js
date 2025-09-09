@@ -77,7 +77,7 @@ export const Divider = styled.div`
   align-items: center;
   text-align: center;
   margin: 20px 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
   &::before,
   &::after {
     content: "";
