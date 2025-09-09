@@ -101,6 +101,7 @@ export const LoadMoreBtn = styled.button`
   border: 2px solid var(--accent);
   border-radius: 8px;
   position: relative;
+  color:var(--main-bg);
   transition: transform 1s ease, background 0.2s ease;
 
   &:hover {
