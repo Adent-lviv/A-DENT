@@ -32,13 +32,17 @@ export default function ProductCard({
   inStock,
 }) {
 
+const optimizeImage = (url, width = 600) => {
+  if (!url) return url;
+  return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
+};
 
     const location = useLocation();
   return (
     <ProductCardEl>
       {imageUrl && (
         <CardImageWrapper>
-          <CardImage  $imageUrl={imageUrl}  $inStock={inStock} />
+          <CardImage    $imageUrl={optimizeImage(imageUrl, 600)}  $inStock={inStock} />
           <StockOverlay  $inStock={inStock}>Немає в наявності</StockOverlay>
         </CardImageWrapper>
       )}
