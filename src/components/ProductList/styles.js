@@ -11,7 +11,7 @@ const pulseClick = keyframes`
 `;
 const pdfPulse = keyframes`
   0% {
-    box-shadow: 0 0 0 0 var(--accent); /* колір можна замінити на var(--accent) */
+    box-shadow: 0 0 0 0 var(--accent); 
    transform: scale(1); opacity: 1;
     }
   70% {
@@ -67,12 +67,12 @@ export const PdfBtn = styled.a`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   padding: 6px 12px;
   width: fit-content;
   background-color: transparent;
   border: 2px solid var(--accent);
-  border-radius: 12px;
+  border-radius: 8px;
   animation: ${pdfPulse} 3s infinite;
   position: relative;
   transition: transform 1s ease, background 0.2s ease;
@@ -89,4 +89,23 @@ export const ClickIcon = styled(FaHandPointer)`
   position: absolute;
   right: 0px;
   bottom: -10px;
+`;
+export const LoadMoreBtn = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 60px auto ;
+  padding: 6px 12px;
+  width: fit-content;
+  background-color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  position: relative;
+  transition: transform 1s ease, background 0.2s ease;
+
+  &:hover {
+    transform: scale(1.1);
+    color: var(--main-text);
+    background: var(--main-bg);
+  }
 `;
