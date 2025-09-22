@@ -60,7 +60,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
           <Divider>{category}</Divider> 
           {category === "Бори" && (
             <PdfBtn
-              href="https://drive.google.com/file/d/1siwWTWjtmLYP_wa6NXL1FF2ASISbbYlN/view?usp=sharing"
+              href="https://drive.google.com/file/d/18a6RwimQ_8Vdn6a9tTGbsvtprx4jrGyq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
