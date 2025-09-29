@@ -9,8 +9,8 @@ export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-      justify-content: center;
-      flex-direction: column;
+          justify-content: space-around;
+     
 `;
 export const TextLogoContainer = styled.div`
   display: flex;
@@ -159,4 +159,25 @@ export const ImgPartners = styled.img`
     max-width: 300px;
     margin-bottom: 0px;
   }
+`;
+
+export const CartButton = styled.button`
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding:0px;
+  font-size: 24px;
+`;
+
+export const Counter = styled.span`
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
 `;

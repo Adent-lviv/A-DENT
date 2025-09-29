@@ -19,7 +19,7 @@ export const CardName = styled.h5`
 `;
 export const CardDescr = styled.p`
   font-size: 0.8rem;
-  max-height: 150px;
+  max-height: 120px;
   height: 100%;
   overflow-y: auto;
   margin: 0;

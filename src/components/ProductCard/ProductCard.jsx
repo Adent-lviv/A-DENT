@@ -17,6 +17,9 @@ import {
   StockOverlay,
 } from "./styles";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartSlice";
+import BtnToBasket from "./ProductCardComponents/BtnToBasket";
 
 export default function ProductCard({
   id,
@@ -31,9 +34,15 @@ export default function ProductCard({
   category,
   inStock,
 }) {
+  const dispatch = useDispatch();
+
   const optimizeImage = (url, width = 600) => {
     if (!url) return url;
     return url.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`);
+  };
+
+  const handleAddBasket = () => {
+    dispatch(addToCart({ id, name, price, imageUrl }));
   };
 
   const location = useLocation();
@@ -50,10 +59,12 @@ export default function ProductCard({
       )}
 
       <CardContent>
+
         <HeaderCard>
           <CardName>{name}</CardName>
           <ArticleText>{article}</ArticleText>
         </HeaderCard>
+
         <CardPrice>
           <b>Ціна: </b>
           {oldPrice ? (
@@ -65,7 +76,12 @@ export default function ProductCard({
             <NewPrice>{price} </NewPrice>
           )}
         </CardPrice>
+
         <CardDescr $page={location.pathname}>{description}</CardDescr>
+
+        {location.pathname !== "/home" && (
+          <BtnToBasket handleAddBasket={handleAddBasket}/>
+        )}
 
         {location.pathname === "/home" && (
           <CardBtns>
