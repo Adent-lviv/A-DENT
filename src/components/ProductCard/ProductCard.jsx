@@ -19,7 +19,7 @@ import {
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
-import BtnToBasket from "./ProductCardComponents/BtnToBasket";
+import BtnToBasket from "../BasicComponents/BtnToBasket";
 
 export default function ProductCard({
   id,

@@ -1,10 +1,23 @@
-// src/redux/cartSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  items: [], // товари в корзині
-  managerId: null, // щоб знати, якому менеджеру відправити замовлення
+const loadCartFromStorage = () => {
+  try {
+    const data = localStorage.getItem("cart");
+    return data ? JSON.parse(data) : { items: [], managerId: null };
+  } catch {
+    return { items: [], managerId: null };
+  }
 };
+
+const saveCartToStorage = (state) => {
+  try {
+    localStorage.setItem("cart", JSON.stringify(state));
+  } catch {
+    console.error("Could not save cart to localStorage");
+  }
+};
+
+const initialState = loadCartFromStorage();
 
 const cartSlice = createSlice({
   name: "cart",
@@ -12,6 +25,7 @@ const cartSlice = createSlice({
   reducers: {
     setManagerId: (state, action) => {
       state.managerId = action.payload;
+      saveCartToStorage(state);
     },
     addToCart: (state, action) => {
       const item = action.payload;
@@ -22,20 +36,23 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ ...item, quantity: 1 });
       }
+      saveCartToStorage(state);
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((i) => i.id !== action.payload);
+      saveCartToStorage(state);
     },
-    decreaseQuantity: (state, action) => {
-      const item = state.items.find((i) => i.id === action.payload);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-      } else {
-        state.items = state.items.filter((i) => i.id !== action.payload);
-      }
-    },
+  decreaseQuantity: (state, action) => {
+  const item = state.items.find((i) => i.id === action.payload);
+  if (item && item.quantity > 1) {
+    item.quantity -= 1;
+  }
+  saveCartToStorage(state);
+},
+
     clearCart: (state) => {
       state.items = [];
+      saveCartToStorage(state);
     },
   },
 });

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { CardBtns } from "../styles";
-import { BtnCount, BtnSendBasket } from "./styles";
-import { WrapperBase } from "../../globalStyles";
+import { WrapperBase } from "../globalStyles";
+import { CardBtns } from "../ProductCard/styles";
+import { BtnCount } from "./styles";
+import { BtnSendBasket } from "./styles";
 
 export default function BtnToBasket({ handleAddBasket }) {
   const [count, setCount] = useState(1);

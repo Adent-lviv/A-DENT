@@ -13,6 +13,7 @@ export default function ProductsPage() {
   const [loading, setLoading] = useState(true);
   const { managerId } = useParams();
 const dispatch = useDispatch();
+
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -28,6 +29,7 @@ const dispatch = useDispatch();
     }
     fetchProducts();
   }, []);
+  
  useEffect(() => {
     if (managerId) {
       dispatch(setManagerId(managerId));

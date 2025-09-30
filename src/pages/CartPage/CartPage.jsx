@@ -1,65 +1,43 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import {
-  addToCart,
-  decreaseQuantity,
-  removeFromCart,
   clearCart,
 } from "../../redux/cartSlice";
-import { Container } from "../../components/globalStyles";
+import { Container, MainTitle, WrapperBase } from "../../components/globalStyles";
+import CartItem from "../../components/Cart/CartItem";
+import { CartProductList, TotalSum } from "./style";
+import { selectTotalPrice } from "../../redux/selectors";
+import OrderForm from "../../components/Cart/OrderForm";
 
 export default function CartPage() {
+
   const cartItems = useSelector((state) => state.cart.items);
+  const totalPrice = useSelector(selectTotalPrice);
+
   const dispatch = useDispatch();
 
-  const totalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+ 
 
   return (
     <Container>
-      <h1>Корзина</h1>
+      <MainTitle style={{margin: "20px auto"}}>Корзина</MainTitle>
       {cartItems.length === 0 ? (
-        <p>Корзина порожня</p>
+        <MainTitle style={{margin: "20px auto"}}>Корзина порожня</MainTitle>
+      
       ) : (
-        <>
+        <WrapperBase style={{flexDirection:"column"}}>
+        <CartProductList>
           {cartItems.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "15px",
-                marginBottom: "15px",
-              }}
-            >
-              <img
-                src={item.imageUrl}
-                alt={item.name}
-                style={{ width: 80, height: 80, objectFit: "cover" }}
-              />
-              <div style={{ flex: 1 }}>
-                <h3>{item.name}</h3>
-                <p>Ціна: {item.price} грн</p>
-              </div>
-              <div>
-                <button onClick={() => dispatch(decreaseQuantity(item.id))}>
-                  -
-                </button>
-                <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-                <button onClick={() => dispatch(addToCart(item))}>+</button>
-              </div>
-              <button onClick={() => dispatch(removeFromCart(item.id))}>
-                Видалити
-              </button>
-            </div>
+            <CartItem key={item.id} item={item} />
           ))}
-          <h2>Загальна сума: {totalPrice} грн</h2>
+          
+        </CartProductList>
+        <TotalSum>Загальна сума: {totalPrice} грн</TotalSum>
           <button onClick={() => dispatch(clearCart())}>
             Очистити корзину
           </button>
-        </>
+          <OrderForm />
+        </WrapperBase>
       )}
     </Container>
   );

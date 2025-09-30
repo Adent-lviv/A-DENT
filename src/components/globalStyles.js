@@ -11,7 +11,7 @@ export const fadeIn = keyframes`
   }
 `;
 export const Container = styled.div`
-  max-width: 320px;
+  max-width: 375px;
   margin: auto;
   padding: 20px @media (min-width: 481px) {
     max-width: 95%;

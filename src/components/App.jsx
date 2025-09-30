@@ -17,9 +17,8 @@ function App() {
     <Suspense fallback={<MainLoaderWrapper> <RiseLoader color="#ee1c27" size={30} /></MainLoaderWrapper>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Products />} />
           <Route path="m/:managerId" element={<Products />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="m/:managerId/cart" element={<CartPage />} />
 
           <Route path="/login" element={<LogIn />} />
 

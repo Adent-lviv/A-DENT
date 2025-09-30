@@ -60,3 +60,17 @@ export const ButtonToTop = styled.button`
     animation: ${bounce} 1.5s infinite;
   }
 `;
+
+export const BtnSendBasket = styled.button`
+padding: 6.5px 12px;
+ &:hover {
+
+    background: var(--accent);
+  }
+
+`;
+export const BtnCount = styled.button` padding: 6px 12px; 
+   &:hover {
+
+    background: var(--accent);
+  }`

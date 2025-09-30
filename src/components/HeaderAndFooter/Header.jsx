@@ -21,20 +21,22 @@ const Header = () => {
   const itemsCount = useSelector((state) =>
     state.cart.items.reduce((acc, item) => acc + item.quantity, 0)
   );
+  const managerId = useSelector((state) => state.cart.managerId);
+
 
   return (
     <HeaderWrapper>
       <Container style={{ display: "flex", flexDirection: "row" }}>
         <LogoContainer>
           <WrapperBase style={{width:"auto", gap:"15px"}}>
-            <ImgLogo onClick={() => navigate("/")} src={logo} alt="Logo" />
+            <ImgLogo onClick={() => navigate(`m/${managerId}`)} src={logo} alt="Logo" />
 
-            <TextLogoContainer>
+            <TextLogoContainer onClick={() => navigate(`m/${managerId}`)}>
               <NameLogo>A-dent</NameLogo>
               <DescrLogo>Dental Shop</DescrLogo>
             </TextLogoContainer>
           </WrapperBase>
-          <CartButton onClick={() => navigate("/cart")}>
+          <CartButton onClick={() => navigate(`m/${managerId}/cart`)}>
             <FaShoppingCart size={30} />
             {itemsCount > 0 && <Counter>{itemsCount}</Counter>}
           </CartButton>
