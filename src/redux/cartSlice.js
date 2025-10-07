@@ -27,28 +27,37 @@ const cartSlice = createSlice({
       state.managerId = action.payload;
       saveCartToStorage(state);
     },
+
     addToCart: (state, action) => {
-      const item = action.payload;
-      const existing = state.items.find((i) => i.id === item.id);
+      const { id, quantity = 1 } = action.payload;
+
+      const existing = state.items.find((i) => i.id === id);
 
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity += quantity;
       } else {
-        state.items.push({ ...item, quantity: 1 });
+        state.items.push({ ...action.payload, quantity });
       }
+
       saveCartToStorage(state);
     },
+
     removeFromCart: (state, action) => {
       state.items = state.items.filter((i) => i.id !== action.payload);
       saveCartToStorage(state);
     },
-  decreaseQuantity: (state, action) => {
-  const item = state.items.find((i) => i.id === action.payload);
-  if (item && item.quantity > 1) {
-    item.quantity -= 1;
-  }
-  saveCartToStorage(state);
-},
+
+    decreaseQuantity: (state, action) => {
+      const item = state.items.find((i) => i.id === action.payload);
+      if (item) {
+        if (item.quantity > 1) {
+          item.quantity -= 1;
+        } else {
+          state.items = state.items.filter((i) => i.id !== action.payload);
+        }
+        saveCartToStorage(state);
+      }
+    },
 
     clearCart: (state) => {
       state.items = [];

@@ -55,22 +55,56 @@ export const ButtonToTop = styled.button`
     bottom: 55px;
     right: 55px;
   }
- svg {
+  svg {
     display: inline-block;
     animation: ${bounce} 1.5s infinite;
   }
 `;
 
-export const BtnSendBasket = styled.button`
-padding: 6.5px 12px;
- &:hover {
+export const ButtonToCartBottom = styled(ButtonToTop)`
+  bottom: 90px;
+  background-color: transparent;
+  border: 1px solid var(--line);
 
-    background: var(--accent);
+  @media (min-width: 768px) {
+    bottom: 115px;
   }
 
-`;
-export const BtnCount = styled.button` padding: 6px 12px; 
-   &:hover {
+  svg {
+    animation: none; 
+    color: var(--main-text);
+  }
 
+ 
+`;
+
+
+export const BtnSendBasket = styled.button`
+  padding: 7px 12px;
+  font-size: 0.85rem;
+  &:hover {
     background: var(--accent);
-  }`
+  }
+`;
+export const BtnCount = styled.button`
+  padding: 6px 12px;
+  &:hover {
+    background: var(--accent);
+  }
+`;
+
+export const OverlayThicknessModal = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonsThicknessModal = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 10px;
+`;

@@ -43,6 +43,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+
       />
     </Suspense>
   );

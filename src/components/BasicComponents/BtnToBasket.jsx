@@ -1,32 +1,25 @@
-import { useState } from "react";
 import { WrapperBase } from "../globalStyles";
 import { CardBtns } from "../ProductCard/styles";
 import { BtnCount } from "./styles";
 import { BtnSendBasket } from "./styles";
 
-export default function BtnToBasket({ handleAddBasket }) {
-  const [count, setCount] = useState(1);
-  const handleAdd = () => {
-    handleAddBasket(count);
-    setCount(1);
-  };
-
+export default function BtnToBasket({ count, setCount, handleAddBasket }) {
   return (
-    <WrapperBase style={{ justifyContent: "space-between"}}>
+    <WrapperBase style={{ justifyContent: "space-between" }}>
       <CardBtns
         style={{
           justifyContent: "flex-start",
-                  alignItems: "center",
-          width:"auto"
+          alignItems: "center",
+          width: "auto",
         }}
       >
-        <BtnCount onClick={() => setCount((prev) => Math.max(prev - 1, 1))}>
-          -
-        </BtnCount>
+        <BtnCount onClick={() => setCount(Math.max(count - 1, 1))}>-</BtnCount>
         <span>{count}</span>
-        <BtnCount onClick={() => setCount((prev) => prev + 1)}>+</BtnCount>
+       <BtnCount onClick={() => setCount(Math.min(count + 1, 100))}>+</BtnCount>
       </CardBtns>
-      <BtnSendBasket onClick={handleAdd}>Додати в корзину</BtnSendBasket>
+      <BtnSendBasket onClick={() => handleAddBasket(count)}>
+        Додати в корзину
+      </BtnSendBasket>
     </WrapperBase>
   );
 }
