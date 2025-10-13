@@ -88,6 +88,7 @@ export const BtnSendBasket = styled.button`
 `;
 export const BtnCount = styled.button`
   padding: 6px 12px;
+  color:var(--main-text);
   &:hover {
     background: var(--accent);
   }
