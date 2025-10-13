@@ -14,16 +14,23 @@ import {
   StyledSelect,
   StyledTextarea,
   SubmitButton,
+  WrapperErrorInput,
   WrapperPriceInput,
 } from "./styles";
 
 const validationSchema = Yup.object().shape({
   category: Yup.string().required("Виберіть категорію"),
   name: Yup.string().required("Вкажіть назву").max(32, "Назва занадто довга"),
-  article: Yup.string().required("Вкажіть артикул").max(14, "Артикул занадто довгий"),
+  article: Yup.string()
+    .required("Вкажіть артикул")
+    .max(14, "Артикул занадто довгий"),
   description: Yup.string(),
   oldPrice: Yup.string(),
-  price: Yup.string().required("Вкажіть ціну"),
+  price: Yup.number()
+    .required("Вкажіть ціну")
+    .typeError("Ціна має бути числом")
+    .positive("Ціна має бути більшою за 0"),
+  currency: Yup.string().required("Вкажіть валюту"),
   file: Yup.mixed().required("Оберіть файл"),
 });
 
@@ -35,6 +42,7 @@ export default function AddProductForm({ onSubmit, loading }) {
     description: "",
     price: "",
     oldPrice: "",
+    currency: "",
     file: null,
   };
 
@@ -46,6 +54,7 @@ export default function AddProductForm({ onSubmit, loading }) {
         article: initialValues.article || "",
         description: initialValues.description || "",
         price: initialValues.price || "",
+        currency: initialValues.currency || "",
         oldPrice: initialValues.oldPrice || "",
         file: null,
       }}
@@ -82,12 +91,19 @@ export default function AddProductForm({ onSubmit, loading }) {
           />
           <StyledError name="description" component="div" />
 
-          <WrapperPriceInput style={{flexWrap: 'wrap'}}>
-            <StyledInput type="text" name="oldPrice" placeholder="Стара Ціна" />
-
-            <StyledInput type="text" name="price" placeholder="Ціна" />
+          <WrapperPriceInput style={{ flexWrap: "wrap" }}>
+         <WrapperErrorInput>  <StyledInput type="text" name="oldPrice" placeholder="Стара Ціна" />
+            <StyledError name="oldPrice" component="div" />
+          </WrapperErrorInput>   
+            <WrapperErrorInput> 
+              <StyledInput type="text" name="price" placeholder="Ціна" />
+            <StyledError name="price" component="div" />
+            </WrapperErrorInput>
+              <WrapperErrorInput> 
+            <StyledInput type="text" name="currency" placeholder="Валюта" />
+            <StyledError name="currency" component="div" />
+            </WrapperErrorInput>
           </WrapperPriceInput>
-          <StyledError name="price" component="div" />
 
           <FileInputWrapper>
             <HiddenFileInput
@@ -98,7 +114,7 @@ export default function AddProductForm({ onSubmit, loading }) {
                 const file = event.currentTarget.files[0];
                 setFieldValue("file", file);
                 if (file)
-                  setFieldValue("filePreview", URL.createObjectURL(file)); // для прев'ю
+                  setFieldValue("filePreview", URL.createObjectURL(file)); 
               }}
             />
             <StyledLabel htmlFor="file">

@@ -10,13 +10,16 @@ const LogIn = lazy(() => import("../pages/LogInPage/LogInPage"));
 const Home = lazy(() => import("../pages/HomePage/HomePage"));
 const Products = lazy(() => import("../pages/ProductsPage/ProductsPage"));
 const NotFound = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
+const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
 
 function App() {
   return (
     <Suspense fallback={<MainLoaderWrapper> <RiseLoader color="#ee1c27" size={30} /></MainLoaderWrapper>}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Products />} />
+          <Route path="m/:managerId" element={<Products />} />
+          <Route path="m/:managerId/cart" element={<CartPage />} />
+
           <Route path="/login" element={<LogIn />} />
 
           <Route
@@ -40,6 +43,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
+
       />
     </Suspense>
   );

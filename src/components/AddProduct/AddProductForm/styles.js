@@ -125,17 +125,14 @@ export const SubmitButton = styled.button`
 export const WrapperPriceInput = styled.div`
   display: flex;
   margin-top: 10px;
-  align-items: center;
+    align-items: flex-start;
+  max-width: 100%;
   justify-content: space-between;
   input {
     width: 100%;
   }
 
-  @media (min-width: 768px) {
-    input {
-      width: auto;
-    }
-  }
+ 
 `;
 export const FileInputWrapper = styled.div``;
 
@@ -179,4 +176,12 @@ export const RemoveFileButton = styled(FiX)`
   border-radius: 50%;
   padding: 2px;
   cursor: pointer;
+`;
+
+export const WrapperErrorInput = styled.div`
+display: flex;
+width: fit-content;
+flex-direction: column;
+max-width: 32%;
+
 `;

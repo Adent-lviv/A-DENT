@@ -8,18 +8,19 @@ export const ProductCardEl = styled.li`
   height: 500px;
   border-radius: 12px;
   display: flex;
+  
   width: 100%;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 `;
 export const CardName = styled.h5`
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin: 0px;
 `;
 export const CardDescr = styled.p`
   font-size: 0.8rem;
-  max-height: 150px;
+  max-height: 110px;
   height: 100%;
   overflow-y: auto;
   margin: 0;
@@ -52,7 +53,7 @@ export const CardDescr = styled.p`
 
   ${(props) =>
     props.$page === "/home" &&
-    `    max-height: 110px;
+    `    max-height: 100px;
        margin-bottom: 15px;
     `}
 

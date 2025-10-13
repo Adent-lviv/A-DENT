@@ -17,8 +17,10 @@ export default function EditProductModal({
       article: product.article.trim() || "",
       description: product.description.trim() || "",
       price: product.price ? String(product.price).trim() : "",
+      currency: product.currency ? String(product.currency).trim() : "",
       oldPrice: product.oldPrice ? String(product.oldPrice).trim() : "",
       imageUrl: product.imageUrl || "",
+
       file: null,
         inStock: product.inStock ?? true,
     }),

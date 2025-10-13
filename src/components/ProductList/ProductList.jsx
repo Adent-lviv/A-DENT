@@ -12,7 +12,11 @@ import ConfirmModal from "../BasicComponents/ConfirmModal";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../api/firebase";
+
+
 export default function ProductList({ products, onDelete, onEdit }) {
+
+
   const categories = [...new Set(products.map((p) => p.category))];
   const [user] = useAuthState(auth);
   const [confirmId, setConfirmId] = useState(null);
@@ -39,7 +43,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
     (a, b) => order.indexOf(a) - order.indexOf(b)
   );
   return (
-    <Container>
+    <>
        
       <CategoryNav>
          
@@ -89,6 +93,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
                   description,
                   price,
                   oldPrice,
+                  currency,
                   imageUrl,
                   article,
                   inStock,
@@ -99,6 +104,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
                     id={id}
                     name={name}
                     description={description}
+                    currency={currency}
                     price={price}
                     oldPrice={oldPrice}
                     article={article}
@@ -117,7 +123,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
         onConfirm={() => handleDeleteConfirmed(confirmId)}
         onCancel={() => setConfirmId(null)}
       /> 
-    </Container>
+    </>
   );
 }
 

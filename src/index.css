@@ -19,6 +19,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 
 a {
   font-weight: 500;
@@ -37,6 +42,7 @@ body {
 div {
   width: 100%;
 }
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -62,7 +68,7 @@ transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.45s
     animation: fadeIn 0.3s ease forwards;
 }
 button:hover {
-transform: scale(1.06);
+transform: scale(1.04);
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
    
@@ -90,21 +96,24 @@ input:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px white inset !important;
   -webkit-text-fill-color: #000 !important;
 }
-/* Загальні тости */
 .Toastify__toast {
   border-radius: 12px;
-  padding: 16px 24px;
+  padding: 14px 14px;
   font-size: 16px;
   font-weight: 500;
   color: #fff;
+  width: auto;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   background: #1c1c1c;
-  /* темний фон */
+margin: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  /* легке підсвічування */
-}
 
+}
+.Toastify__toast .Toastify__close-button {
+  color: white;
+
+}
 /* Успішні тости */
 .Toastify__toast--success {
   box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);

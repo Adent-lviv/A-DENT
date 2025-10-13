@@ -5,30 +5,31 @@ import {
   StyledError,
   StyledForm,
   StyledInput,
- 
   StyledSelect,
   StyledTextarea,
   SubmitButton,
+  WrapperErrorInput,
   WrapperPriceInput,
 } from "../AddProduct/AddProductForm/styles";
 import { Slider, ToggleInput, ToggleWrapper } from "./styles";
 
 export default function EditProductForm({ initialValues, onSubmit, loading }) {
-  
-  console.log("EditProductForm",initialValues)
-  
+  console.log("EditProductForm", initialValues);
+
   const validationSchema = Yup.object().shape({
     category: Yup.string(),
     name: Yup.string().max(32, "Назва занадто довга"),
     article: Yup.string().max(14, "Артикул занадто довгий"),
     description: Yup.string(),
-    price: Yup.string(),
+    price: Yup.number()
+      .required("Вкажіть ціну")
+      .typeError("Ціна має бути числом")
+      .positive("Ціна має бути більшою за 0"),
+    currency: Yup.string().required("Вкажіть валюту"),
     oldPrice: Yup.string(),
     file: Yup.mixed().nullable(),
     inStock: Yup.boolean(),
   });
-
-
 
   return (
     <Formik
@@ -89,24 +90,37 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
           />
           <StyledError name="description" component="div" />
           <WrapperPriceInput style={{ flexWrap: "wrap" }}>
-            <StyledInput
-              type="text"
-              name="oldPrice"
-              placeholder="Стара Ціна"
-               value={values.oldPrice}
-              onChange={(e) => setFieldValue("oldPrice", e.target.value)}
-            />
-
-            <StyledInput
-              type="text"
-              name="price"
-              placeholder="Ціна"
-              value={values.price || ""}
-              onChange={(e) => setFieldValue("price", e.target.value)}
-            />
+            <WrapperErrorInput>
+              <StyledInput
+                type="text"
+                name="oldPrice"
+                placeholder="Стара Ціна"
+                value={values.oldPrice}
+                onChange={(e) => setFieldValue("oldPrice", e.target.value)}
+              />
+              <StyledError name="oldPrice" component="div" />
+            </WrapperErrorInput>
+            <WrapperErrorInput>
+              <StyledInput
+                type="text"
+                name="price"
+                placeholder="Ціна"
+                value={values.price || ""}
+                onChange={(e) => setFieldValue("price", e.target.value)}
+              />
+              <StyledError name="price" component="div" />
+            </WrapperErrorInput>
+            <WrapperErrorInput>
+              <StyledInput
+                type="text"
+                name="currency"
+                placeholder="Валюта"
+                value={values.currency || ""}
+                onChange={(e) => setFieldValue("currency", e.target.value)}
+              />
+              <StyledError name="currency" component="div" />
+            </WrapperErrorInput>
           </WrapperPriceInput>
-
-          <StyledError name="price" component="div" />
 
           <input
             type="file"
