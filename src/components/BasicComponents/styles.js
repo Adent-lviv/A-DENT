@@ -82,6 +82,7 @@ export const ButtonToCartBottom = styled(ButtonToTop)`
 export const BtnSendBasket = styled.button`
   padding: 7px 12px;
   font-size: 0.85rem;
+    color:var(--main-text);
   &:hover {
     background: var(--accent);
   }
