@@ -37,7 +37,7 @@ const Header = () => {
             </TextLogoContainer>
           </WrapperBase>
           <CartButton onClick={() => navigate(`m/${managerId}/cart`)}>
-            <FaShoppingCart size={30} />
+            <FaShoppingCart style={{color:"white"}} size={30} />
             {itemsCount > 0 && <Counter>{itemsCount}</Counter>}
           </CartButton>
         </LogoContainer>
