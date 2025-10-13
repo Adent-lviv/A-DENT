@@ -33,9 +33,12 @@ export default function ThicknessModal({ onClose, onConfirm }) {
             <Form>
               <Field as={StyledSelect} name="thickness">
                 <option value="">-- виберіть розмір --</option>
-                <option value="0.5 мм">0.5 мм</option>
-                <option value="0.7 мм">0.7 мм</option>
-                <option value="1.0 мм">1.0 мм</option>
+                <option value="3/0">3/0</option>
+                <option value="4/0">4/0</option>
+                <option value="5/0">5/0</option>
+                      <option value="6/0">6/0</option>
+                      <option value="7/0">7/0</option>
+                      <option value="8/0">8/0</option>
               </Field>
               <StyledError
                 style={{ marginTop: "10px" }}

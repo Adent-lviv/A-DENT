@@ -74,9 +74,7 @@ width: 100%;
     border-radius: 8px;
 grid-column: 1 / -1;
 }
-    &:hover {
-      background: #444;
-    }
+   
 
 
   }
