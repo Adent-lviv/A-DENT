@@ -30,7 +30,7 @@ export const createOrder = async (managerId, items, customer) => {
     const managerData = managerSnap.data();
     const telegramId = managerData.telegramId;
 
-    const text = `
+const text = `
 *🛒 НОВЕ ЗАМОВЛЕННЯ*
 Менеджер: ${managerId}
 
@@ -44,19 +44,24 @@ export const createOrder = async (managerId, items, customer) => {
 
 🛍️ *Товари:*
 ${items
-  .map(
-    (i) =>
-      `- ${i.name}${i.thickness ? ` (${i.thickness})` : ""} x${
-        i.quantity
-      }шт = ${i.price * i.quantity} грн`
-  )
+  .map((i) => {
+    const price = parseFloat(i.price);
+    const isValid = !isNaN(price);
+    const total = isValid ? price * i.quantity : "Ціну уточнити";
+    const priceText = isValid ? `${total} грн` : total;
+    return `- ${i.name}${i.thickness ? ` (${i.thickness})` : ""} x${
+      i.quantity
+    }шт = ${priceText}`;
+  })
   .join("\n")}
 
-💰 *Загальна сума:* *${items.reduce(
-      (sum, i) => sum + i.price * i.quantity,
-      0
-    )} грн*
+💰 *Загальна сума:* *${items.reduce((sum, i) => {
+  const price = parseFloat(i.price);
+  if (isNaN(price)) return sum;
+  return sum + price * i.quantity;
+}, 0)} грн*
 `;
+
 
  
     await fetch(

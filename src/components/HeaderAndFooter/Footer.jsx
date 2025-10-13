@@ -11,9 +11,12 @@ import {
 import logo from "../../../public/logo.png";
 import { useNavigate } from "react-router-dom";
 import partners from "../../../public/partners.png";
+import { useSelector } from "react-redux";
 
 export default function Footer() {
   const navigate = useNavigate();
+    const managerId = useSelector((state) => state.cart.managerId);
+
   return (
     <FooterWrapper>
       <FreeDelivery>
@@ -22,7 +25,7 @@ export default function Footer() {
 
       <FooterTop>
         <FooterWrapperLogo>
-          <LogoSection onClick={() => navigate("/")}>
+          <LogoSection onClick={() => navigate(`m/${managerId}`)}>
             <img src={logo} alt="Logo" />
             <h2>A-dent</h2>
             <h5>Dental Shop</h5>
