@@ -76,9 +76,8 @@ export const MainTitle = styled.h1`
 export const Divider = styled.div`
   display: flex;
   align-items: center;
-  text-align: center;
+
   margin: 20px 0;
-  font-size: 2rem;
   &::before,
   &::after {
     content: "";
@@ -92,6 +91,15 @@ export const Divider = styled.div`
   &:not(:empty)::after {
     margin-left: 0.75em;
 
+     
+  }
+`;
+export const DividerText = styled.p`
+width:fit-content;
+  text-align: center;
+  
+  font-size: 1.8rem;
+  
       @media (min-width: 768px) {
      font-size: 2rem;
   }
