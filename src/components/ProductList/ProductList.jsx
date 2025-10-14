@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import { Container, Divider } from "../globalStyles";
+import { Divider, DividerText } from "../globalStyles";
 import {
   PdfBtn,
   CategoryNav,
@@ -13,10 +13,7 @@ import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../api/firebase";
 
-
 export default function ProductList({ products, onDelete, onEdit }) {
-
-
   const categories = [...new Set(products.map((p) => p.category))];
   const [user] = useAuthState(auth);
   const [confirmId, setConfirmId] = useState(null);
@@ -38,52 +35,55 @@ export default function ProductList({ products, onDelete, onEdit }) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const order = ["Шовний матеріал","Леза", "Гемостатичні губки",  "Інструменти", "Бори", "Імпланти"];
+  const order = [
+    "Шовний матеріал",
+    "Леза",
+    "Гемостатична губка",
+    "Інструменти",
+    "Бори",
+    "Імпланти",
+  ];
   const sortedCategories = [...categories].sort(
     (a, b) => order.indexOf(a) - order.indexOf(b)
   );
   return (
     <>
-       
       <CategoryNav>
-         
         {sortedCategories.map((category, i) => (
           <CategoryNavItem key={category} onClick={() => handleScroll(i)}>
-             
-            {category} 
+            {category}
           </CategoryNavItem>
-        ))} 
-      </CategoryNav> 
+        ))}
+      </CategoryNav>
       {sortedCategories.map((category, i) => (
         <div
           key={category}
           ref={(el) => (categoryRefs.current[i] = el)}
           style={{ marginBottom: 20 }}
         >
-           
-          <Divider>{category}</Divider> 
+          <Divider>
+            {" "}
+            <DividerText>{category}</DividerText>{" "}
+          </Divider>
           {category === "Бори" && (
             <PdfBtn
               href="https://drive.google.com/file/d/18a6RwimQ_8Vdn6a9tTGbsvtprx4jrGyq/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
-               
-              Переглянути повний каталог <ClickIcon size={20} /> 
+              Переглянути повний каталог <ClickIcon size={20} />
             </PdfBtn>
-          )} 
+          )}
           {category === "Імпланти" && (
             <PdfBtn
               href="https://drive.google.com/file/d/1zCU60ta4Ww55v13IxCzzr9QxEWb75COT/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
-               
-              Переглянути повний каталог <ClickIcon size={20} /> 
+              Переглянути повний каталог <ClickIcon size={20} />
             </PdfBtn>
-          )} 
+          )}
           <ProductListEL>
-             
             {products
               .filter((product) => product.category === category)
               .map(
@@ -114,19 +114,18 @@ export default function ProductList({ products, onDelete, onEdit }) {
                     onEdit={user ? onEdit : null}
                   />
                 )
-              )} 
-          </ProductListEL> 
+              )}
+          </ProductListEL>
         </div>
-      ))} 
+      ))}
       <ConfirmModal
         visible={!!confirmId}
         onConfirm={() => handleDeleteConfirmed(confirmId)}
         onCancel={() => setConfirmId(null)}
-      /> 
+      />
     </>
   );
 }
-
 
 // ВАРІАНТ З КНОПКОЮ LOAD MORE ДЛЯ КОЖНОЇ КАТЕГОРІЇ(ПАГІНАЦІЯ)
 
@@ -183,7 +182,6 @@ export default function ProductList({ products, onDelete, onEdit }) {
 //   const sortedCategories = [...categories].sort(
 //     (a, b) => order.indexOf(a) - order.indexOf(b)
 //   );
-
 
 //   const productsByCategory = sortedCategories.reduce((acc, category) => {
 //     acc[category] = products.filter((p) => p.category === category);

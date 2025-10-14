@@ -22,7 +22,7 @@ export default function ThicknessModal({ onClose, onConfirm,options = [] }) {
   return (
     <ModalOverlay onClick={handleOverlayClick}>
       <ModalContent onClick={(e) => e.stopPropagation()}>
-        <h3>Оберіть товщину</h3>
+        <h3>Оберіть розмір</h3>
 
         <Formik
           validationSchema={validationSchema}
