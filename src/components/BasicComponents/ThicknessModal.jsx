@@ -5,7 +5,7 @@ import { StyledError, StyledSelect } from "../AddProduct/AddProductForm/styles";
 import { CardBtnEdit, CardBtnTrash } from "../ProductCard/styles";
 import * as Yup from "yup";
 
-export default function ThicknessModal({ onClose, onConfirm }) {
+export default function ThicknessModal({ onClose, onConfirm,options = [] }) {
   const handleSubmit = (values) => {
     if (!values.thickness) return;
     onConfirm(values.thickness);
@@ -32,13 +32,11 @@ export default function ThicknessModal({ onClose, onConfirm }) {
           {({ values }) => (
             <Form>
               <Field as={StyledSelect} name="thickness">
-                <option value="">-- виберіть розмір --</option>
-                <option value="3/0">3/0</option>
-                <option value="4/0">4/0</option>
-                <option value="5/0">5/0</option>
-                      <option value="6/0">6/0</option>
-                      <option value="7/0">7/0</option>
-                      <option value="8/0">8/0</option>
+             {options.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
               </Field>
               <StyledError
                 style={{ marginTop: "10px" }}

@@ -58,6 +58,8 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
             <option value="Бори">Бори</option>
             <option value="Інструменти">Інструменти</option>
             <option value="Шовний матеріал">Шовний матеріал</option>
+                      <option value="Леза">Леза</option>
+            <option value="Гемостатичні губки">Гемостатичні губки</option>
             <option value="Імпланти">Імпланти</option>
           </StyledSelect>
 
