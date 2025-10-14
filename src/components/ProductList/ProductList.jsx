@@ -38,7 +38,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const order = ["Шовний матеріал", "Інструменти", "Бори", "Імпланти"];
+  const order = ["Шовний матеріал","Леза", "Гемостатичні губки",  "Інструменти", "Бори", "Імпланти"];
   const sortedCategories = [...categories].sort(
     (a, b) => order.indexOf(a) - order.indexOf(b)
   );

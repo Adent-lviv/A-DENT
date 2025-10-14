@@ -49,16 +49,27 @@ export default function ProductCard({
   };
 
   const handleAddBasket = (count) => {
-    if (category === "Шовний матеріал") {
-      setShowModal(true);
-      return;
-    }
+   if (category === "Шовний матеріал" || category === "Леза") {
+    setShowModal(true);
+    return;
+  }
 
     dispatch(addToCart({ id, name,oldPrice, price, imageUrl, quantity: count,currency }));
     setCount(1);
 
     toast.success("Товар додано до корзини!");
   };
+
+const getOptionsByCategory = () => {
+  if (category === "Шовний матеріал") {
+    return ["3/0", "4/0", "5/0", "6/0", "7/0", "8/0"];
+  }
+  if (category === "Леза") {
+    return ["11", "12", "12d", "15", "15c"];
+  }
+  return [];
+};
+
 
 const handleConfirmThickness = (thickness) => {
   const cartId = `${id}_${thickness}`; 
@@ -160,6 +171,7 @@ const handleConfirmThickness = (thickness) => {
         <ThicknessModal
           onClose={() => setShowModal(false)}
           onConfirm={handleConfirmThickness}
+            options={getOptionsByCategory()}
         />
       )}
     </ProductCardEl>
