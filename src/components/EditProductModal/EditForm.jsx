@@ -18,7 +18,7 @@ export default function EditProductForm({ initialValues, onSubmit, loading }) {
 
   const validationSchema = Yup.object().shape({
     category: Yup.string(),
-    name: Yup.string().max(32, "Назва занадто довга"),
+    name: Yup.string().max(60, "Назва занадто довга"),
     article: Yup.string().max(14, "Артикул занадто довгий"),
     description: Yup.string(),
     price: Yup.number()

@@ -15,7 +15,7 @@ export const ProductCardEl = styled.li`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 `;
 export const CardName = styled.h5`
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   margin: 0px;
 `;
 export const CardDescr = styled.p`

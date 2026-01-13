@@ -62,8 +62,7 @@ export default function ProductList({ products, onDelete, onEdit }) {
           style={{ marginBottom: 20 }}
         >
           <Divider>
-            {" "}
-            <DividerText>{category}</DividerText>{" "}
+            <DividerText>{category}</DividerText>
           </Divider>
           {category === "Бори" && (
             <PdfBtn
