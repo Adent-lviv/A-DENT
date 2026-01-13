@@ -20,7 +20,7 @@ import {
 
 const validationSchema = Yup.object().shape({
   category: Yup.string().required("Виберіть категорію"),
-  name: Yup.string().required("Вкажіть назву").max(32, "Назва занадто довга"),
+  name: Yup.string().required("Вкажіть назву").max(60, "Назва занадто довга"),
   article: Yup.string()
     .required("Вкажіть артикул")
     .max(14, "Артикул занадто довгий"),

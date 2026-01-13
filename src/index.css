@@ -22,7 +22,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -37,7 +37,6 @@ a:hover {
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-
 }
 div {
   width: 100%;
@@ -47,6 +46,16 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+h1,
+h2,
+h3,
+h4,
+h5
+ {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -64,23 +73,23 @@ button {
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.45s ease, box-shadow 0.45s ease;
-    animation: fadeIn 0.3s ease forwards;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.45s ease, box-shadow 0.45s ease;
+  animation: fadeIn 0.3s ease forwards;
 }
 button:hover {
-transform: scale(1.04);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
-   
+
 button:focus,
 button:focus-visible {
   outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
-}button:active {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+button:active {
   transform: scale(0.95);
 }
-
-
 
 input:hover,
 input:focus {
@@ -105,14 +114,12 @@ input:-webkit-autofill:focus {
   width: auto;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
   background: #1c1c1c;
-margin: 16px;
+  margin: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-
 }
 .Toastify__toast .Toastify__close-button {
   color: white;
-
 }
 /* Успішні тости */
 .Toastify__toast--success {
@@ -133,5 +140,3 @@ margin: 16px;
 .Toastify__toast--info {
   box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
 }
-
-
