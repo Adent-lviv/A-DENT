@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <FooterWrapper>
       <FreeDelivery>
-        Безкоштовна доставка по Україні при замовленні від 3500 грн
+        Безкоштовна доставка по Україні при замовленні від 5000 грн
       </FreeDelivery>
 
       <FooterTop>
