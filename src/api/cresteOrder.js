@@ -9,7 +9,7 @@ import {
 
 import { toast } from "react-toastify";
 
-const TELEGRAM_BOT_TOKEN = "8094842852:AAF_B_q-PN96dyOCgpcsS3RQvsnXHYfT5-w";
+const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
 
 export const createOrder = async (managerId, items, customer) => {
   try {
