@@ -5,7 +5,7 @@ import { StyledError, StyledSelect } from "../AddProduct/AddProductForm/styles";
 import { CardBtnEdit, CardBtnTrash } from "../ProductCard/styles";
 import * as Yup from "yup";
 
-export default function ThicknessModal({ onClose, onConfirm,options = [] }) {
+export default function ThicknessModal({ onClose, onConfirm, options = [] }) {
   const handleSubmit = (values) => {
     if (!values.thickness) return;
     onConfirm(values.thickness);
@@ -17,7 +17,7 @@ export default function ThicknessModal({ onClose, onConfirm,options = [] }) {
     }
   };
   const validationSchema = Yup.object().shape({
-    thickness: Yup.string().required("`Вибір обов’язковий"),
+    thickness: Yup.string().required("Вибір обов’язковий"),
   });
   return (
     <ModalOverlay onClick={handleOverlayClick}>
@@ -31,13 +31,17 @@ export default function ThicknessModal({ onClose, onConfirm,options = [] }) {
         >
           {({ values }) => (
             <Form>
-              <Field as={StyledSelect} name="thickness">
-             {options.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </Field>
+            <Field as={StyledSelect} name="thickness">
+  <option value="" disabled>
+    Оберіть розмір
+  </option>
+
+  {options.map((opt) => (
+    <option key={opt} value={opt}>
+      {opt}
+    </option>
+  ))}
+</Field>
               <StyledError
                 style={{ marginTop: "10px" }}
                 name="thickness"

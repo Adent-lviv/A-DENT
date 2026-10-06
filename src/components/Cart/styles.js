@@ -69,6 +69,7 @@ export const StyledFormOrder = styled(Form)`
     margin-top: 10px;
     padding: 15px 20px;
     background: #222;
+    color: #fff;
 
 width: 100%;
     border-radius: 8px;
